@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  main:
+    tty: true
+    build:
+      context: .
+
+    environment:
+      - INFLUX_DB_TOKEN=abcd
+      - CONFIG_PATH=/etc/config.yml
+    volumes:
+      - ./config.yml:/etc/config.yml
+
+  influxdb:
+    image: bitnami/influxdb:2.2.0
+    ports:
+      - '8086:8086'
+    volumes:
+      - ./influxdb_data:/bitnami/influxdb
+    environment:
+      - INFLUXDB_HTTP_AUTH_ENABLED=false
+      - INFLUXDB_ADMIN_USER_PASSWORD=influxdb-admin
+      - INFLUXDB_ADMIN_USER_TOKEN=abcd

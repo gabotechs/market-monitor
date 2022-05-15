@@ -1,0 +1,5 @@
+/venv
+config.yml
+.env
+/.idea
+/influxdb_data
