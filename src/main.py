@@ -1,29 +1,26 @@
-from typing import Dict, List
-import time
-from pyargparse import PyArgs
-import typing as T
-from yahoo_finance_api import QuoteSource
 import asyncio
 import os
-import logging
-from influx_metric_publisher import InfluxMetricPublisher, MetricPublisherPlugin
+import traceback
+from typing import List
+
+from pyargparse import PyArgs
+
 import logs
+from metric_collectors.yahoo_quotes_collector import YahooQuotesCollector
+from metric_collectors.yahoo_stock_details_collector import YahooStockDetailsCollector
+from metric_collectors.yahoo_insights_collector import YahooInsightsCollector
+
+from metric_publisher.influx_metric_publisher import InfluxMetricPublisher
 
 
 class Config(PyArgs):
     interval: int = 5
-    symbols: T.List[str]
+    symbols: List[str]
     influxdb_host: str = 'localhost'
     influxdb_port: int = 8086
     influxdb_token: str
     influxdb_bucket: str = 'primary'
     influxdb_organization: str = 'primary'
-
-
-class QuotePlugin(MetricPublisherPlugin):
-    async def measure_per_symbol(self, symbols: List[str]) -> Dict[str, dict]:
-        data_per_symbol = await QuoteSource().retrieve(symbols)
-        return {k: v.__dict__ for k, v in data_per_symbol.items()}
 
 
 async def main():
@@ -36,16 +33,19 @@ async def main():
         token=config.influxdb_token,
         bucket=config.influxdb_bucket,
         org=config.influxdb_organization,
-        symbols=config.symbols,
         logger=logger
     )
 
-    publisher.register_plugin(QuotePlugin("quote"))
+    publisher.register_plugin(YahooQuotesCollector(config.symbols), interval=1)
+    publisher.register_plugin(YahooInsightsCollector(config.symbols), interval=3600)
+    publisher.register_plugin(YahooStockDetailsCollector(config.symbols), interval=3600)
+
     logger.info(f"monitoring symbols {', '.join(config.symbols)}")
     try:
-        await publisher.loop(config.interval)
+        await publisher.loop()
     except Exception as e:
         logger.error('Error on main loop: '+str(e))
+        traceback.print_exc()
         exit(1)
 
 
