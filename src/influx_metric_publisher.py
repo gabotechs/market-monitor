@@ -1,8 +1,9 @@
 from typing import List, Dict
 from abc import ABC, abstractmethod
 from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
-import time
+import time, asyncio
 from influxdb_client import Point
+from logging import Logger
 
 
 class MetricPublisherPlugin(ABC):
@@ -15,7 +16,7 @@ class MetricPublisherPlugin(ABC):
 
 
 class InfluxMetricPublisher:
-    def __init__(self, host: str, port: int, token: str, bucket: str, org: str, symbols: List[str]):
+    def __init__(self, host: str, port: int, token: str, bucket: str, org: str, symbols: List[str], logger: Logger):
         self.client = InfluxDBClientAsync(
             url=f'http://{host}:{port}',
             token=token
@@ -24,11 +25,12 @@ class InfluxMetricPublisher:
         self.bucket = bucket
         self.org = org
         self.plugins: List[MetricPublisherPlugin] = []
+        self.logger = logger
 
     def register_plugin(self, plugin: MetricPublisherPlugin):
         self.plugins.append(plugin)
 
-    async def collect(self):
+    async def __collect(self):
         now = int(time.time()*1e9)
         points: List[Point] = []
         for plugin in self.plugins:
@@ -44,3 +46,11 @@ class InfluxMetricPublisher:
         write_api = self.client.write_api()
         for point in points:
             await write_api.write(bucket=self.bucket, org=self.org, record=point)
+
+    async def loop(self, interval: int):
+        while True:
+            start = time.time()
+            await self.__collect()
+            self.logger.info(f"collected metrics from {len(self.plugins)} plugins in {int((time.time() - start) * 1e3)} ms")
+            for _ in range(interval):
+                await asyncio.sleep(1)
