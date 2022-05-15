@@ -4,3 +4,4 @@ aiohttp==3.8.1
 pydantic==1.9.0
 influxdb-client[async]==1.28.0
 httpx==0.22.0
+coloredlogs==15.0.1

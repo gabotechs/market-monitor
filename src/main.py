@@ -5,7 +5,9 @@ import typing as T
 from yahoo_finance_api import QuoteSource
 import asyncio
 import os
+import logging
 from influx_metric_publisher import InfluxMetricPublisher, MetricPublisherPlugin
+import logs
 
 
 class Config(PyArgs):
@@ -13,7 +15,7 @@ class Config(PyArgs):
     symbols: T.List[str]
     influxdb_host: str = 'localhost'
     influxdb_port: int = 8086
-    influxdb_token: str = 'abcd'
+    influxdb_token: str
     influxdb_bucket: str = 'primary'
     influxdb_organization: str = 'primary'
 
@@ -26,23 +28,25 @@ class QuotePlugin(MetricPublisherPlugin):
 
 async def main():
     config = Config(os.environ.get("CONFIG_PATH") or 'config.yml')
+    logger = logs.init_logger()
+    logger.info("Initializing metric publisher...")
     publisher = InfluxMetricPublisher(
         host=config.influxdb_host,
         port=config.influxdb_port,
         token=config.influxdb_token,
         bucket=config.influxdb_bucket,
         org=config.influxdb_organization,
-        symbols=config.symbols
+        symbols=config.symbols,
+        logger=logger
     )
 
     publisher.register_plugin(QuotePlugin("quote"))
-
-    while True:
-        start = time.time()
-        await publisher.collect()
-        print(f"collected metrics from {len(publisher.plugins)} plugins in {int((time.time() - start) * 1e3)} ms")
-        for _ in range(config.interval):
-            await asyncio.sleep(1)
+    logger.info(f"monitoring symbols {', '.join(config.symbols)}")
+    try:
+        await publisher.loop(config.interval)
+    except Exception as e:
+        logger.error('Error on main loop: '+str(e))
+        exit(1)
 
 
 if __name__ == '__main__':
