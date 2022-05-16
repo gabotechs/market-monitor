@@ -36,7 +36,7 @@ async def main():
         logger=logger
     )
 
-    publisher.register_plugin(YahooQuotesCollector(config.symbols), interval=1)
+    publisher.register_plugin(YahooQuotesCollector(config.symbols), interval=5)
     publisher.register_plugin(YahooInsightsCollector(config.symbols), interval=3600)
     publisher.register_plugin(YahooStockDetailsCollector(config.symbols), interval=3600)
 
