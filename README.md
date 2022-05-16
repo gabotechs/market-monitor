@@ -11,7 +11,7 @@ link https://docs.docker.com/get-docker/
 - Create your `.env` file, you can copy-paste `.env.example` and change the values.
 It should contain this info:
 ```dotenv
-INFLUX_TOKEN=some-token # This can be anything, but if you are going to expose the dashboard
+INFLUXDB_TOKEN=some-token # This can be anything, but if you are going to expose the dashboard
                         # over a network, you may want to make this a secure string.
 INFLUXDB_ADMIN_PASSWORD=some-pass # This is the password that will be used to access the dashboard
                                   # as an the "admin" user.

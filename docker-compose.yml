@@ -11,7 +11,9 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - INFLUXDB_HOST=influxdb
-      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      - INFLUXDB_BUCKET=primary
+      - INFLUXDB_ORGANIZATION=primary
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
       - SYMBOLS=${SYMBOLS}
 
   influxdb:
@@ -25,4 +27,4 @@ services:
       - ./influxdb_data:/bitnami/influxdb
     environment:
       - INFLUXDB_ADMIN_USER_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
-      - INFLUXDB_ADMIN_USER_TOKEN=${INFLUX_TOKEN}
+      - INFLUXDB_ADMIN_USER_TOKEN=${INFLUXDB_TOKEN}
