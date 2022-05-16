@@ -53,7 +53,12 @@ class InfluxMetricPublisher:
                 continue
             plugin_spec.last_queried = now
 
-            metrics = await plugin_spec.collector.get_metrics()
+            try:
+                metrics = await plugin_spec.collector.get_metrics()
+            except Exception as e:
+                self.logger.error(f"Error on plugin {plugin_spec.collector.__class__.__name__}: {e}")
+                continue
+
             for metric in metrics:
                 p = Point.measurement(metric.measure_name)
                 if metric.tags:
