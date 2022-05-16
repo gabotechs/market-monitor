@@ -20,15 +20,27 @@
           "data": [
             {
               "type": "cell",
-              "id": "095dd0d4e68cb000"
+              "id": "095e3758dc490000"
             },
             {
               "type": "cell",
-              "id": "095dd0d4e7ccb000"
+              "id": "095e3758e0090000"
             },
             {
               "type": "cell",
-              "id": "095e2d0585af0000"
+              "id": "095e3758e1c90000"
+            },
+            {
+              "type": "cell",
+              "id": "095e3988b7890000"
+            },
+            {
+              "type": "cell",
+              "id": "095eec768ec90000"
+            },
+            {
+              "type": "cell",
+              "id": "095ef140dd090000"
             }
           ]
         },
@@ -36,7 +48,7 @@
           "data": [
             {
               "type": "variable",
-              "id": "095dd0d4f5700000"
+              "id": "095e3758ee9cd000"
             }
           ]
         }
@@ -44,7 +56,43 @@
     },
     "included": [
       {
-        "id": "095dd0d4e68cb000",
+        "id": "095e3758dc490000",
+        "type": "cell",
+        "attributes": {
+          "x": 9,
+          "y": 4,
+          "w": 3,
+          "h": 24
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "095e3758dc490000"
+            }
+          }
+        }
+      },
+      {
+        "id": "095e3758e0090000",
+        "type": "cell",
+        "attributes": {
+          "x": 9,
+          "y": 0,
+          "w": 3,
+          "h": 4
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "095e3758e0090000"
+            }
+          }
+        }
+      },
+      {
+        "id": "095e3758e1c90000",
         "type": "cell",
         "attributes": {
           "x": 0,
@@ -56,219 +104,70 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095dd0d4e68cb000"
+              "id": "095e3758e1c90000"
             }
           }
         }
       },
       {
-        "id": "095dd0d4e7ccb000",
+        "id": "095e3988b7890000",
         "type": "cell",
         "attributes": {
-          "x": 9,
-          "y": 0,
-          "w": 3,
-          "h": 4
+          "x": 5,
+          "y": 4,
+          "w": 4,
+          "h": 11
         },
         "relationships": {
           "view": {
             "data": {
               "type": "view",
-              "id": "095dd0d4e7ccb000"
+              "id": "095e3988b7890000"
             }
           }
         }
       },
       {
-        "id": "095e2d0585af0000",
+        "id": "095eec768ec90000",
         "type": "cell",
         "attributes": {
-          "x": 9,
+          "x": 0,
           "y": 4,
           "w": 3,
-          "h": 4
+          "h": 3
         },
         "relationships": {
           "view": {
             "data": {
               "type": "view",
-              "id": "095e2d0585af0000"
+              "id": "095eec768ec90000"
+            }
+          }
+        }
+      },
+      {
+        "id": "095ef140dd090000",
+        "type": "cell",
+        "attributes": {
+          "x": 3,
+          "y": 4,
+          "w": 2,
+          "h": 3
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "095ef140dd090000"
             }
           }
         }
       },
       {
         "type": "view",
-        "id": "095dd0d4e68cb000",
+        "id": "095e3758dc490000",
         "attributes": {
-          "name": "quotes",
-          "properties": {
-            "shape": "chronograf-v2",
-            "queries": [
-              {
-                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field == \"ask\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-                "editMode": "advanced",
-                "name": "",
-                "builderConfig": {
-                  "buckets": [],
-                  "tags": [
-                    {
-                      "key": "_measurement",
-                      "values": [],
-                      "aggregateFunctionType": "filter"
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "name": "mean"
-                    }
-                  ],
-                  "aggregateWindow": {
-                    "period": "auto",
-                    "fillValues": false
-                  }
-                }
-              }
-            ],
-            "axes": {
-              "x": {
-                "bounds": [
-                  "",
-                  ""
-                ],
-                "label": "",
-                "prefix": "",
-                "suffix": "",
-                "base": "10",
-                "scale": "linear"
-              },
-              "y": {
-                "bounds": [
-                  "",
-                  ""
-                ],
-                "label": "",
-                "prefix": "",
-                "suffix": "",
-                "base": "2",
-                "scale": "linear"
-              }
-            },
-            "type": "xy",
-            "staticLegend": {
-              "colorizeRows": true,
-              "opacity": 1,
-              "orientationThreshold": 100000000,
-              "widthRatio": 1
-            },
-            "geom": "line",
-            "colors": [
-              {
-                "id": "1fc8aad3-659e-4c9e-b1ec-b96c512c4bcb",
-                "type": "scale",
-                "hex": "#31C0F6",
-                "name": "Nineteen Eighty Four",
-                "value": 0
-              },
-              {
-                "id": "d11a10d4-0a1a-4f77-b193-152d88f1d2fe",
-                "type": "scale",
-                "hex": "#A500A5",
-                "name": "Nineteen Eighty Four",
-                "value": 0
-              },
-              {
-                "id": "da86e810-c7e0-4dec-a350-73b1fe5d0c2b",
-                "type": "scale",
-                "hex": "#FF7E27",
-                "name": "Nineteen Eighty Four",
-                "value": 0
-              }
-            ],
-            "note": "",
-            "showNoteWhenEmpty": false,
-            "xColumn": "_time",
-            "generateXAxisTicks": [],
-            "xTotalTicks": 0,
-            "xTickStart": 0,
-            "xTickStep": 0,
-            "yColumn": "_value",
-            "generateYAxisTicks": [],
-            "yTotalTicks": 0,
-            "yTickStart": 0,
-            "yTickStep": 0,
-            "shadeBelow": false,
-            "position": "overlaid",
-            "timeFormat": "",
-            "hoverDimension": "auto",
-            "legendColorizeRows": true,
-            "legendHide": false,
-            "legendOpacity": 1,
-            "legendOrientationThreshold": 100000000
-          }
-        }
-      },
-      {
-        "type": "view",
-        "id": "095dd0d4e7ccb000",
-        "attributes": {
-          "name": "Name this Cell",
-          "properties": {
-            "shape": "chronograf-v2",
-            "type": "single-stat",
-            "queries": [
-              {
-                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field == \"ask\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-                "editMode": "advanced",
-                "name": "",
-                "builderConfig": {
-                  "buckets": [],
-                  "tags": [
-                    {
-                      "key": "_measurement",
-                      "values": [],
-                      "aggregateFunctionType": "filter"
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "name": "mean"
-                    }
-                  ],
-                  "aggregateWindow": {
-                    "period": "auto",
-                    "fillValues": false
-                  }
-                }
-              }
-            ],
-            "prefix": "",
-            "tickPrefix": "",
-            "suffix": "",
-            "tickSuffix": "",
-            "colors": [
-              {
-                "id": "base",
-                "type": "text",
-                "hex": "#00C9FF",
-                "name": "laser",
-                "value": 0
-              }
-            ],
-            "decimalPlaces": {
-              "isEnforced": true,
-              "digits": 2
-            },
-            "note": "",
-            "showNoteWhenEmpty": false
-          }
-        }
-      },
-      {
-        "type": "view",
-        "id": "095e2d0585af0000",
-        "attributes": {
-          "name": "Name this Cell",
+          "name": "Stock details",
           "properties": {
             "shape": "chronograf-v2",
             "type": "table",
@@ -365,19 +264,455 @@
         }
       },
       {
-        "id": "095dd0d4f5700000",
+        "type": "view",
+        "id": "095e3758e0090000",
+        "attributes": {
+          "name": "Name this Cell",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "single-stat",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field == \"ask\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "prefix": "",
+            "tickPrefix": "",
+            "suffix": "",
+            "tickSuffix": "",
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#00C9FF",
+                "name": "laser",
+                "value": 0
+              }
+            ],
+            "decimalPlaces": {
+              "isEnforced": true,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095e3758e1c90000",
+        "attributes": {
+          "name": "quotes",
+          "properties": {
+            "shape": "chronograf-v2",
+            "queries": [
+              {
+                "text": "data = from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._value > 0)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n\ndata |> filter(fn: (r) => r._field == \"ask\") |> yield(name: \"ask\")\ndata |> filter(fn: (r) => r._field == \"bid\") |> yield(name: \"bid\")\ndata |> filter(fn: (r) => r._field == \"fiftyDayAverage\") |> yield(name: \"fiftyDayAverage\")",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "axes": {
+              "x": {
+                "bounds": [
+                  "",
+                  ""
+                ],
+                "label": "",
+                "prefix": "",
+                "suffix": "",
+                "base": "10",
+                "scale": "linear"
+              },
+              "y": {
+                "bounds": [
+                  "",
+                  ""
+                ],
+                "label": "",
+                "prefix": "",
+                "suffix": "",
+                "base": "2",
+                "scale": "linear"
+              }
+            },
+            "type": "xy",
+            "staticLegend": {
+              "colorizeRows": true,
+              "heightRatio": 0.21610169491525424,
+              "opacity": 1,
+              "orientationThreshold": 100000000,
+              "widthRatio": 1
+            },
+            "geom": "line",
+            "colors": [
+              {
+                "id": "1fc8aad3-659e-4c9e-b1ec-b96c512c4bcb",
+                "type": "scale",
+                "hex": "#31C0F6",
+                "name": "Nineteen Eighty Four",
+                "value": 0
+              },
+              {
+                "id": "d11a10d4-0a1a-4f77-b193-152d88f1d2fe",
+                "type": "scale",
+                "hex": "#A500A5",
+                "name": "Nineteen Eighty Four",
+                "value": 0
+              },
+              {
+                "id": "da86e810-c7e0-4dec-a350-73b1fe5d0c2b",
+                "type": "scale",
+                "hex": "#FF7E27",
+                "name": "Nineteen Eighty Four",
+                "value": 0
+              }
+            ],
+            "note": "",
+            "showNoteWhenEmpty": false,
+            "xColumn": "_time",
+            "generateXAxisTicks": [],
+            "xTotalTicks": 0,
+            "xTickStart": 0,
+            "xTickStep": 0,
+            "yColumn": "_value",
+            "generateYAxisTicks": [],
+            "yTotalTicks": 0,
+            "yTickStart": 0,
+            "yTickStep": 0,
+            "shadeBelow": false,
+            "position": "overlaid",
+            "timeFormat": "",
+            "hoverDimension": "auto",
+            "legendColorizeRows": true,
+            "legendHide": false,
+            "legendOpacity": 1,
+            "legendOrientationThreshold": 100000000
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095e3988b7890000",
+        "attributes": {
+          "name": "Insights",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "table",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: -1w)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"insight\" and r.symbol == v.symbol)\n  |> last()\n  |> toString()\n  |> group()",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#ffffff",
+                "name": "white",
+                "value": 0
+              }
+            ],
+            "tableOptions": {
+              "verticalTimeAxis": true,
+              "sortBy": {
+                "internalName": "",
+                "displayName": "",
+                "visible": false
+              },
+              "wrapping": "",
+              "fixFirstColumn": false
+            },
+            "fieldOptions": [
+              {
+                "internalName": "_start",
+                "displayName": "_start",
+                "visible": false
+              },
+              {
+                "internalName": "_stop",
+                "displayName": "_stop",
+                "visible": false
+              },
+              {
+                "internalName": "_time",
+                "displayName": "_time",
+                "visible": false
+              },
+              {
+                "internalName": "_field",
+                "displayName": "field",
+                "visible": true
+              },
+              {
+                "internalName": "_value",
+                "displayName": "value",
+                "visible": true
+              },
+              {
+                "internalName": "_measurement",
+                "displayName": "_measurement",
+                "visible": false
+              },
+              {
+                "internalName": "symbol",
+                "displayName": "symbol",
+                "visible": false
+              }
+            ],
+            "timeFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimalPlaces": {
+              "isEnforced": false,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095eec768ec90000",
+        "attributes": {
+          "name": "Buy confidence",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "gauge",
+            "queries": [
+              {
+                "text": "data = from(bucket: \"primary\")\n  |> range(start: -1w)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"recommendation_trend\" and r.symbol == v.symbol)\n  |> filter(fn: (r) => r._field != \"period\")\n  |> last()\n\ntotal = data\n  |> group()\n  |> sum()\n  |> findColumn(column: \"_value\", fn: (key) => true)\n\ndata\n  |> map(fn: (r) => {\n    x = if r._field == \"strongSell\" then\n      0.0 / 4.0 * float(v: r._value)\n    else if r._field == \"sell\" then\n      1.0 / 4.0 * float(v: r._value)\n    else if r._field == \"buy\" then\n      3.0 / 4.0 * float(v: r._value)\n    else if r._field == \"strongBuy\" then\n      4.0 / 4.0 * float(v: r._value)\n    else\n      2.0 / 4.0 * float(v: r._value)\n    return { _value: 100.0 * x / float(v: total[0])  }\n  })\n  |> sum()\n",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "prefix": "",
+            "tickPrefix": "",
+            "suffix": " %",
+            "tickSuffix": "",
+            "colors": [
+              {
+                "id": "0",
+                "type": "min",
+                "hex": "#00C9FF",
+                "name": "laser",
+                "value": 0
+              },
+              {
+                "id": "1",
+                "type": "max",
+                "hex": "#9394FF",
+                "name": "comet",
+                "value": 100
+              }
+            ],
+            "decimalPlaces": {
+              "isEnforced": true,
+              "digits": 0
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095ef140dd090000",
+        "attributes": {
+          "name": "Name this Cell",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "table",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: -1w)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"recommendation_trend\" and r.symbol == v.symbol)\n  |> filter(fn: (r) => r._field != \"period\")\n  |> last()\n  |> group()\n  |> map(fn: (r) => {\n    x = if r._field == \"strongSell\" then\n      0\n    else if r._field == \"sell\" then\n      1\n    else if r._field == \"buy\" then\n      3\n    else if r._field == \"strongBuy\" then\n      4\n    else\n      2\n    return { r with sort: x }\n  })\n",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#ffffff",
+                "name": "white",
+                "value": 0
+              }
+            ],
+            "tableOptions": {
+              "verticalTimeAxis": true,
+              "sortBy": {
+                "internalName": "sort",
+                "displayName": "sort",
+                "visible": true
+              },
+              "wrapping": "",
+              "fixFirstColumn": false
+            },
+            "fieldOptions": [
+              {
+                "internalName": "_field",
+                "displayName": "action",
+                "visible": true
+              },
+              {
+                "internalName": "_value",
+                "displayName": "number of analysts",
+                "visible": true
+              },
+              {
+                "internalName": "_start",
+                "displayName": "_start",
+                "visible": false
+              },
+              {
+                "internalName": "_stop",
+                "displayName": "_stop",
+                "visible": false
+              },
+              {
+                "internalName": "_time",
+                "displayName": "_time",
+                "visible": false
+              },
+              {
+                "internalName": "_measurement",
+                "displayName": "_measurement",
+                "visible": false
+              },
+              {
+                "internalName": "symbol",
+                "displayName": "symbol",
+                "visible": false
+              },
+              {
+                "internalName": "sort",
+                "displayName": "sort",
+                "visible": false
+              }
+            ],
+            "timeFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimalPlaces": {
+              "isEnforced": false,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "id": "095e3758ee9cd000",
         "type": "variable",
         "attributes": {
           "name": "symbol",
           "arguments": {
             "type": "query",
             "values": {
-              "query": "import \"influxdata/influxdb/schema\"\n\nschema.tagValues(bucket: \"primary\", tag: \"symbol\")",
+              "query": "import \"influxdata/influxdb/schema\"\n\nschema.tagValues(bucket: \"primary\", tag: \"symbol\", start: -1h)",
               "language": "flux"
             }
           },
           "selected": [
-            "NVDA"
+            "MSFT"
           ]
         },
         "relationships": {

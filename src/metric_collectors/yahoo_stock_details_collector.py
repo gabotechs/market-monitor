@@ -42,6 +42,7 @@ modules = [
 
 class YahooStockDetailsCollector(YahooApiSource, MetricCollector):
     MEASURE_NAME = "stock_details"
+    MEASURE_NAME_2 = "recommendation_trend"
 
     async def measure_per_symbol(self) -> List[MetricEntry]:
         result: List[MetricEntry] = []
@@ -58,5 +59,13 @@ class YahooStockDetailsCollector(YahooApiSource, MetricCollector):
                     measure_name=self.MEASURE_NAME,
                     symbol=symbol,
                     data=quote_summary_result['financialData']
+                ))
+            if 'recommendationTrend' in quote_summary_result \
+                    and 'trend' in quote_summary_result['recommendationTrend'] \
+                    and len(quote_summary_result['recommendationTrend']['trend']):
+                result.append(MetricEntry(
+                    measure_name=self.MEASURE_NAME_2,
+                    symbol=symbol,
+                    data=quote_summary_result['recommendationTrend']['trend'][0]
                 ))
         return result
