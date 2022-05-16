@@ -20,8 +20,7 @@ services:
     image: bitnami/influxdb:2.2.0
     healthcheck:
       test: curl --fail -s http://localhost:8086 || exit 1
-      interval: 5s
-      timeout: 90s
+      start_period: 90s
     ports:
       - '8086:8086'
     volumes:
