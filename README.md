@@ -1,4 +1,4 @@
-<p align="center" style="font-size: 52px; font-family: 'Apple SD Gothic Neo',serif">Market Monitor</p>
+# Market Monitor
 
 ### Real time dashboard for monitoring stocks / crypto market.
 
