@@ -17,14 +17,19 @@ services:
       - SYMBOLS=${SYMBOLS}
 
   influxdb:
-    image: bitnami/influxdb:2.2.0
+    image: influxdb:2.2.0-alpine
     healthcheck:
       test: curl --fail -s http://localhost:8086 || exit 1
       start_period: 90s
     ports:
       - '8086:8086'
     volumes:
-      - ./influxdb_data:/bitnami/influxdb
+      - ./influxdb_data:/var/lib/influxdb2
     environment:
-      - INFLUXDB_ADMIN_USER_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
-      - INFLUXDB_ADMIN_USER_TOKEN=${INFLUXDB_TOKEN}
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=primary
+      - DOCKER_INFLUXDB_INIT_BUCKET=primary
+      - DOCKER_INFLUXDB_INIT_RETENTION=1w
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
