@@ -15,7 +15,6 @@ from metric_publisher.influx_metric_publisher import InfluxMetricPublisher
 
 
 class Config(PyArgs):
-    interval: int = 5
     symbols: List[str]
     influxdb_host: str = 'localhost'
     influxdb_port: int = 8086
