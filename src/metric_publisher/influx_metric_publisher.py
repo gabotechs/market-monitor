@@ -29,6 +29,15 @@ class InfluxMetricPublisher:
         self.plugins: List[PluginSpec] = []
         self.logger = logger
 
+    async def wait_available(self):
+        while True:
+            try:
+                await self.client.ping()
+                break
+            except Exception as e:
+                self.logger.warning(f"Waiting for influx: ${e}")
+                await asyncio.sleep(1)
+
     def register_plugin(self, collector: MetricCollector, interval: int):
         self.plugins.append(PluginSpec(
             collector=collector,

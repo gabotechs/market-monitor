@@ -17,10 +17,7 @@ services:
       - SYMBOLS=${SYMBOLS}
 
   influxdb:
-    image: influxdb:2.2.0-alpine
-    healthcheck:
-      test: curl --fail -s http://localhost:8086 || exit 1
-      start_period: 90s
+    image: influxdb:2.2.0
     ports:
       - '8086:8086'
     volumes:
