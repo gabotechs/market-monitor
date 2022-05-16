@@ -1,6 +1,8 @@
-# Market Monitor
-Real time dashboard for monitoring stocks / crypto market. With useful insights
-like most recent news, market sentiment analysis, etc...
+<p align="center" style="font-size: 52px; font-family: 'Apple SD Gothic Neo',serif">Market Monitor</p>
+
+### Real time dashboard for monitoring stocks / crypto market.
+
+<p align="center"> <img alt="" src="docs/dashboard.png"> </p>
 
 # Install
 
