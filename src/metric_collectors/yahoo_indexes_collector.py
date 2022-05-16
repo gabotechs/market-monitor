@@ -6,8 +6,17 @@ from yahoo_finance_api.generated.api.api.quotes import asyncio_detailed
 from yahoo_finance_api.yahoo_api_source import YahooApiSource, ParseYahooResponseException
 
 
-class YahooQuotesCollector(YahooApiSource, MetricCollector):
-    MEASURE_NAME = "quote"
+class YahooIndexesCollector(YahooApiSource, MetricCollector):
+    MEASURE_NAME = "indexes"
+    INDEXES = [
+        "^GSPC",
+        "^DJI",
+        "^IXIC",
+        "^VIX"
+    ]
+
+    def __init__(self):
+        super(YahooIndexesCollector, self).__init__(self.INDEXES)
 
     async def get_metrics(self) -> List[MetricEntry]:
         raw_res = await asyncio_detailed(client=self.client, symbols=','.join(self.symbols))
@@ -17,11 +26,11 @@ class YahooQuotesCollector(YahooApiSource, MetricCollector):
 
         result: List[MetricEntry] = []
         for raw_quote in res['quoteResponse']['result']:
-            if 'symbol' not in raw_quote:
-                raise ParseYahooResponseException('got one quote without symbol:\n' + json.dumps(raw_quote, indent=4))
+            if 'shortName' not in raw_quote:
+                raise ParseYahooResponseException('got one quote without shortName:\n' + json.dumps(raw_quote, indent=4))
             result.append(MetricEntry(
                 measure_name=self.MEASURE_NAME,
-                tags={"symbol": raw_quote['symbol']},
+                tags={"index": raw_quote['shortName']},
                 data=raw_quote
             ))
 

@@ -9,7 +9,7 @@ from yahoo_finance_api.yahoo_api_source import YahooApiSource, ParseYahooRespons
 class YahooInsightsCollector(YahooApiSource, MetricCollector):
     MEASURE_NAME = "insight"
 
-    async def measure_per_symbol(self) -> List[MetricEntry]:
+    async def get_metrics(self) -> List[MetricEntry]:
         result: List[MetricEntry] = []
         for symbol in self.symbols:
             raw_res = await asyncio_detailed(client=self.client, symbol=symbol)
@@ -21,7 +21,7 @@ class YahooInsightsCollector(YahooApiSource, MetricCollector):
 
             result.append(MetricEntry(
                 measure_name=self.MEASURE_NAME,
-                symbol=symbol,
+                tags={"symbol": symbol},
                 data=finance
             ))
         return result

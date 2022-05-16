@@ -9,6 +9,7 @@ import logs
 from metric_collectors.yahoo_quotes_collector import YahooQuotesCollector
 from metric_collectors.yahoo_stock_details_collector import YahooStockDetailsCollector
 from metric_collectors.yahoo_insights_collector import YahooInsightsCollector
+from metric_collectors.yahoo_indexes_collector import YahooIndexesCollector
 
 from metric_publisher.influx_metric_publisher import InfluxMetricPublisher
 
@@ -36,6 +37,7 @@ async def main():
         logger=logger
     )
 
+    publisher.register_plugin(YahooIndexesCollector(), interval=5)
     publisher.register_plugin(YahooQuotesCollector(config.symbols), interval=5)
     publisher.register_plugin(YahooInsightsCollector(config.symbols), interval=3600)
     publisher.register_plugin(YahooStockDetailsCollector(config.symbols), interval=3600)

@@ -44,7 +44,7 @@ class YahooStockDetailsCollector(YahooApiSource, MetricCollector):
     MEASURE_NAME = "stock_details"
     MEASURE_NAME_2 = "recommendation_trend"
 
-    async def measure_per_symbol(self) -> List[MetricEntry]:
+    async def get_metrics(self) -> List[MetricEntry]:
         result: List[MetricEntry] = []
         for symbol in self.symbols:
             raw_res = await asyncio_detailed(client=self.client, symbol=symbol, modules=','.join(modules))
@@ -57,7 +57,7 @@ class YahooStockDetailsCollector(YahooApiSource, MetricCollector):
             if 'financialData' in quote_summary_result:
                 result.append(MetricEntry(
                     measure_name=self.MEASURE_NAME,
-                    symbol=symbol,
+                    tags={"symbol": symbol},
                     data=quote_summary_result['financialData']
                 ))
             if 'recommendationTrend' in quote_summary_result \
@@ -65,7 +65,7 @@ class YahooStockDetailsCollector(YahooApiSource, MetricCollector):
                     and len(quote_summary_result['recommendationTrend']['trend']):
                 result.append(MetricEntry(
                     measure_name=self.MEASURE_NAME_2,
-                    symbol=symbol,
+                    tags={"symbol": symbol},
                     data=quote_summary_result['recommendationTrend']['trend'][0]
                 ))
         return result

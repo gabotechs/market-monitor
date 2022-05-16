@@ -1,17 +1,17 @@
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 
 @dataclass
 class MetricEntry:
     measure_name: str
-    symbol: str
     data: dict
+    tags: Optional[Dict[str, str]] = None
     time: Optional[int] = None
 
 
 class MetricCollector(ABC):
     @abstractmethod
-    async def measure_per_symbol(self) -> List[MetricEntry]:
+    async def get_metrics(self) -> List[MetricEntry]:
         raise NotImplementedError()

@@ -44,10 +44,12 @@ class InfluxMetricPublisher:
                 continue
             plugin_spec.last_queried = now
 
-            metrics = await plugin_spec.collector.measure_per_symbol()
+            metrics = await plugin_spec.collector.get_metrics()
             for metric in metrics:
                 p = Point.measurement(metric.measure_name)
-                p = p.tag("symbol", metric.symbol)
+                if metric.tags:
+                    for k, v in metric.tags.items():
+                        p = p.tag(k, v)
                 p = p.time(now)
                 flatten_data = flatten_dict(metric.data)
                 for k, v in flatten_data.items():
