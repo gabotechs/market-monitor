@@ -2,9 +2,6 @@ version: '3.8'
 
 services:
   main:
-    depends_on:
-      influxdb:
-        condition: service_healthy
     build:
       context: .
 
