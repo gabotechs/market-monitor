@@ -41,6 +41,7 @@ async def main():
     await publisher.wait_available()
 
     if config.twitter_token:
+        logger.warning("TWITTER_TOKEN not configured, tweeter feed is not available")
         publisher.register_plugin(TwitterTweetCollector(config.twitter_token), interval=3600)
     publisher.register_plugin(YahooIndexesCollector(), interval=5)
     publisher.register_plugin(YahooQuotesCollector(config.symbols), interval=5)
