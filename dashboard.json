@@ -101,6 +101,10 @@
             {
               "type": "cell",
               "id": "0960ccbeab1d5000"
+            },
+            {
+              "type": "cell",
+              "id": "0960edc1709d5000"
             }
           ]
         },
@@ -119,8 +123,8 @@
         "id": "095f7d5ec4ac4000",
         "type": "cell",
         "attributes": {
-          "x": 8,
-          "y": 6,
+          "x": 5,
+          "y": 9,
           "w": 3,
           "h": 14
         },
@@ -155,9 +159,9 @@
         "id": "095f7d5ec96c4000",
         "type": "cell",
         "attributes": {
-          "x": 5,
-          "y": 6,
-          "w": 3,
+          "x": 0,
+          "y": 8,
+          "w": 5,
           "h": 11
         },
         "relationships": {
@@ -176,7 +180,7 @@
           "x": 0,
           "y": 2,
           "w": 11,
-          "h": 4
+          "h": 3
         },
         "relationships": {
           "view": {
@@ -192,7 +196,7 @@
         "type": "cell",
         "attributes": {
           "x": 0,
-          "y": 6,
+          "y": 5,
           "w": 3,
           "h": 3
         },
@@ -210,7 +214,7 @@
         "type": "cell",
         "attributes": {
           "x": 3,
-          "y": 6,
+          "y": 5,
           "w": 2,
           "h": 3
         },
@@ -489,6 +493,24 @@
             "data": {
               "type": "view",
               "id": "0960ccbeab1d5000"
+            }
+          }
+        }
+      },
+      {
+        "id": "0960edc1709d5000",
+        "type": "cell",
+        "attributes": {
+          "x": 5,
+          "y": 5,
+          "w": 6,
+          "h": 4
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "0960edc1709d5000"
             }
           }
         }
@@ -1960,6 +1982,126 @@
             ],
             "decimalPlaces": {
               "isEnforced": true,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "0960edc1709d5000",
+        "attributes": {
+          "name": "Name this Cell",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "table",
+            "queries": [
+              {
+                "text": "import \"influxdata/influxdb/schema\"\nimport \"strings\"\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"twitter\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> schema.fieldsAsCols()\n  |> map(fn: (r) => ({ \n  _time_reverse: -r.timestamp,\n  _value: \"[\"+strings.substring(end: 10, start: 0, v: string(v: r._time))+ \" \" + strings.substring(end: 19, start: 11, v: string(v: r._time))+\"] \" + r.user + \": \" + r.content\n   }))",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#ffffff",
+                "name": "white",
+                "value": 0
+              }
+            ],
+            "tableOptions": {
+              "verticalTimeAxis": true,
+              "sortBy": {
+                "internalName": "_time_reverse",
+                "displayName": "_time_reverse",
+                "visible": true
+              },
+              "wrapping": "",
+              "fixFirstColumn": true
+            },
+            "fieldOptions": [
+              {
+                "internalName": "meta",
+                "displayName": "meta",
+                "visible": false
+              },
+              {
+                "internalName": "_start",
+                "displayName": "_start",
+                "visible": false
+              },
+              {
+                "internalName": "_stop",
+                "displayName": "_stop",
+                "visible": false
+              },
+              {
+                "internalName": "_time",
+                "displayName": "_time",
+                "visible": false
+              },
+              {
+                "internalName": "_value",
+                "displayName": "Tweets",
+                "visible": true
+              },
+              {
+                "internalName": "_field",
+                "displayName": "_field",
+                "visible": false
+              },
+              {
+                "internalName": "_measurement",
+                "displayName": "_measurement",
+                "visible": false
+              },
+              {
+                "internalName": "content",
+                "displayName": "content",
+                "visible": false
+              },
+              {
+                "internalName": "timestamp",
+                "displayName": "timestamp",
+                "visible": false
+              },
+              {
+                "internalName": "user",
+                "displayName": "user",
+                "visible": false
+              },
+              {
+                "internalName": "_time_reverse",
+                "displayName": "_time_reverse",
+                "visible": false
+              }
+            ],
+            "timeFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimalPlaces": {
+              "isEnforced": false,
               "digits": 2
             },
             "note": "",
