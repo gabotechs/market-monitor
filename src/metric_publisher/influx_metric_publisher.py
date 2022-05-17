@@ -1,5 +1,6 @@
 import asyncio
 import time
+import traceback
 from dataclasses import dataclass
 from logging import Logger
 from typing import List
@@ -57,6 +58,8 @@ class InfluxMetricPublisher:
                 metrics = await plugin_spec.collector.get_metrics()
             except Exception as e:
                 self.logger.error(f"Error on plugin {plugin_spec.collector.__class__.__name__}: {e}")
+                print(e)
+                traceback.print_exc()
                 continue
 
             for metric in metrics:
