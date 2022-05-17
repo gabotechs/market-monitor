@@ -123,7 +123,7 @@
         "id": "095f7d5ec4ac4000",
         "type": "cell",
         "attributes": {
-          "x": 5,
+          "x": 7,
           "y": 9,
           "w": 3,
           "h": 14
@@ -159,8 +159,8 @@
         "id": "095f7d5ec96c4000",
         "type": "cell",
         "attributes": {
-          "x": 0,
-          "y": 8,
+          "x": 2,
+          "y": 9,
           "w": 5,
           "h": 11
         },
@@ -198,7 +198,7 @@
           "x": 0,
           "y": 5,
           "w": 3,
-          "h": 3
+          "h": 4
         },
         "relationships": {
           "view": {
@@ -213,8 +213,8 @@
         "id": "095f7d5ed4ac4000",
         "type": "cell",
         "attributes": {
-          "x": 3,
-          "y": 5,
+          "x": 0,
+          "y": 9,
           "w": 2,
           "h": 3
         },
@@ -501,9 +501,9 @@
         "id": "0960edc1709d5000",
         "type": "cell",
         "attributes": {
-          "x": 5,
+          "x": 3,
           "y": 5,
-          "w": 6,
+          "w": 8,
           "h": 4
         },
         "relationships": {
