@@ -12,6 +12,7 @@ services:
       - INFLUXDB_ORGANIZATION=primary
       - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
       - SYMBOLS=${SYMBOLS}
+      - TWITTER_TOKEN=${TWITTER_TOKEN}
 
   influxdb:
     image: influxdb:2.2.0
