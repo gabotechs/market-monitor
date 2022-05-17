@@ -5,10 +5,10 @@ from dataclasses import dataclass
 from logging import Logger
 from typing import List
 
-from influxdb_client import Point
-from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
+from influxdb_client import Point  # type: ignore
+from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync  # type: ignore
 
-from .metric_collector import MetricCollector
+from .metric_collector import MetricCollector, MetricEntry
 from .utils.flatten_dict import flatten_dict
 
 
@@ -20,6 +20,8 @@ class PluginSpec:
 
 
 class InfluxMetricPublisher:
+    ERROR_MEASURE = "errors"
+
     def __init__(self, host: str, port: int, token: str, bucket: str, org: str, logger: Logger):
         self.client = InfluxDBClientAsync(
             url=f'http://{host}:{port}',
@@ -57,9 +59,11 @@ class InfluxMetricPublisher:
             try:
                 metrics = await plugin_spec.collector.get_metrics()
             except Exception as e:
-                self.logger.error(f"Error on plugin {plugin_spec.collector.__class__.__name__}: {e}")
+                msg = f"Error on plugin {plugin_spec.collector.__class__.__name__}: {e}"
+                self.logger.error(msg)
                 print(e)
                 traceback.print_exc()
+                points.append(Point.measurement(self.ERROR_MEASURE).time(now).field('error', msg))
                 continue
 
             for metric in metrics:
