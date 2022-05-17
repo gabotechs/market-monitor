@@ -1,7 +1,7 @@
 import asyncio
 import os
 import traceback
-from typing import List
+from typing import List, Optional
 
 from pyargparse import PyArgs
 
@@ -10,6 +10,7 @@ from metric_collectors.yahoo_quotes_collector import YahooQuotesCollector
 from metric_collectors.yahoo_stock_details_collector import YahooStockDetailsCollector
 from metric_collectors.yahoo_insights_collector import YahooInsightsCollector
 from metric_collectors.yahoo_indexes_collector import YahooIndexesCollector
+from metric_collectors.twitter_tweet_collector import TwitterTweetCollector
 
 from metric_publisher.influx_metric_publisher import InfluxMetricPublisher
 
@@ -21,6 +22,7 @@ class Config(PyArgs):
     influxdb_token: str
     influxdb_bucket: str = 'primary'
     influxdb_organization: str = 'primary'
+    twitter_token: Optional[str] = None
 
 
 async def main():
@@ -38,6 +40,8 @@ async def main():
 
     await publisher.wait_available()
 
+    if config.twitter_token:
+        publisher.register_plugin(TwitterTweetCollector(config.twitter_token), interval=3600)
     publisher.register_plugin(YahooIndexesCollector(), interval=5)
     publisher.register_plugin(YahooQuotesCollector(config.symbols), interval=5)
     publisher.register_plugin(YahooInsightsCollector(config.symbols), interval=3600)
