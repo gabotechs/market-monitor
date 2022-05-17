@@ -72,7 +72,7 @@ class InfluxMetricPublisher:
                     for k, v in metric.tags.items():
                         p = p.tag(k, v)
                 if metric.time:
-                    p.time(metric.time)
+                    p = p.time(metric.time)
                 else:
                     p = p.time(now)
                 flatten_data = flatten_dict(metric.data)
