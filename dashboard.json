@@ -20,83 +20,87 @@
           "data": [
             {
               "type": "cell",
-              "id": "095e3758dc490000"
+              "id": "095f7d5ec4ac4000"
             },
             {
               "type": "cell",
-              "id": "095e3758e0090000"
+              "id": "095f7d5ec8ac4000"
             },
             {
               "type": "cell",
-              "id": "095e3758e1c90000"
+              "id": "095f7d5ec96c4000"
             },
             {
               "type": "cell",
-              "id": "095e3988b7890000"
+              "id": "095f7d5eca2c4000"
             },
             {
               "type": "cell",
-              "id": "095eec768ec90000"
+              "id": "095f7d5ed42c4000"
             },
             {
               "type": "cell",
-              "id": "095ef140dd090000"
+              "id": "095f7d5ed4ac4000"
             },
             {
               "type": "cell",
-              "id": "095f0eb099490000"
+              "id": "095f7d5ed52c4000"
             },
             {
               "type": "cell",
-              "id": "095f11b927090000"
+              "id": "095f7d5ed5ac4000"
             },
             {
               "type": "cell",
-              "id": "095f1540df090000"
+              "id": "095f7d5ed62c4000"
             },
             {
               "type": "cell",
-              "id": "095f17b613490000"
+              "id": "095f7d5ed6ec4000"
             },
             {
               "type": "cell",
-              "id": "095f17f5d1c90000"
+              "id": "095f7d5ed96c4000"
             },
             {
               "type": "cell",
-              "id": "095f28d0ccc90000"
+              "id": "095f7d5ed9ec4000"
             },
             {
               "type": "cell",
-              "id": "095f429f4f090000"
+              "id": "095f7d5edaac4000"
             },
             {
               "type": "cell",
-              "id": "095f43ad37490000"
+              "id": "095f7d5edbec4000"
             },
             {
               "type": "cell",
-              "id": "095f43e90bc90000"
+              "id": "095f7d5edc6c4000"
             },
             {
               "type": "cell",
-              "id": "095f4554e2490000"
+              "id": "095f7d5edcec4000"
             },
             {
               "type": "cell",
-              "id": "095f459b17890000"
+              "id": "095f7d5edeec4000"
             },
             {
               "type": "cell",
-              "id": "095f45c280090000"
+              "id": "095f7d5edf6c4000"
             },
             {
               "type": "cell",
-              "id": "095f461ce7490000"
+              "id": "095f7d5edfec4000"
             },
             {
               "type": "cell",
-              "id": "095f46423cc90000"
+              "id": "095f7d5ee06c4000"
+            },
+            {
+              "type": "cell",
+              "id": "0960ccbeab1d5000"
             }
           ]
         },
@@ -104,7 +108,7 @@
           "data": [
             {
               "type": "variable",
-              "id": "095e3758ee9cd000"
+              "id": "095f7d5f07c9b000"
             }
           ]
         }
@@ -112,7 +116,7 @@
     },
     "included": [
       {
-        "id": "095e3758dc490000",
+        "id": "095f7d5ec4ac4000",
         "type": "cell",
         "attributes": {
           "x": 8,
@@ -124,13 +128,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095e3758dc490000"
+              "id": "095f7d5ec4ac4000"
             }
           }
         }
       },
       {
-        "id": "095e3758e0090000",
+        "id": "095f7d5ec8ac4000",
         "type": "cell",
         "attributes": {
           "x": 11,
@@ -142,31 +146,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095e3758e0090000"
+              "id": "095f7d5ec8ac4000"
             }
           }
         }
       },
       {
-        "id": "095e3758e1c90000",
-        "type": "cell",
-        "attributes": {
-          "x": 0,
-          "y": 2,
-          "w": 11,
-          "h": 4
-        },
-        "relationships": {
-          "view": {
-            "data": {
-              "type": "view",
-              "id": "095e3758e1c90000"
-            }
-          }
-        }
-      },
-      {
-        "id": "095e3988b7890000",
+        "id": "095f7d5ec96c4000",
         "type": "cell",
         "attributes": {
           "x": 5,
@@ -178,13 +164,31 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095e3988b7890000"
+              "id": "095f7d5ec96c4000"
             }
           }
         }
       },
       {
-        "id": "095eec768ec90000",
+        "id": "095f7d5eca2c4000",
+        "type": "cell",
+        "attributes": {
+          "x": 0,
+          "y": 2,
+          "w": 11,
+          "h": 4
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "095f7d5eca2c4000"
+            }
+          }
+        }
+      },
+      {
+        "id": "095f7d5ed42c4000",
         "type": "cell",
         "attributes": {
           "x": 0,
@@ -196,13 +200,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095eec768ec90000"
+              "id": "095f7d5ed42c4000"
             }
           }
         }
       },
       {
-        "id": "095ef140dd090000",
+        "id": "095f7d5ed4ac4000",
         "type": "cell",
         "attributes": {
           "x": 3,
@@ -214,13 +218,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095ef140dd090000"
+              "id": "095f7d5ed4ac4000"
             }
           }
         }
       },
       {
-        "id": "095f0eb099490000",
+        "id": "095f7d5ed52c4000",
         "type": "cell",
         "attributes": {
           "x": 11,
@@ -232,13 +236,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f0eb099490000"
+              "id": "095f7d5ed52c4000"
             }
           }
         }
       },
       {
-        "id": "095f11b927090000",
+        "id": "095f7d5ed5ac4000",
         "type": "cell",
         "attributes": {
           "x": 11,
@@ -250,13 +254,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f11b927090000"
+              "id": "095f7d5ed5ac4000"
             }
           }
         }
       },
       {
-        "id": "095f1540df090000",
+        "id": "095f7d5ed62c4000",
         "type": "cell",
         "attributes": {
           "x": 11,
@@ -268,13 +272,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f1540df090000"
+              "id": "095f7d5ed62c4000"
             }
           }
         }
       },
       {
-        "id": "095f17b613490000",
+        "id": "095f7d5ed6ec4000",
         "type": "cell",
         "attributes": {
           "x": 11,
@@ -286,13 +290,31 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f17b613490000"
+              "id": "095f7d5ed6ec4000"
             }
           }
         }
       },
       {
-        "id": "095f17f5d1c90000",
+        "id": "095f7d5ed96c4000",
+        "type": "cell",
+        "attributes": {
+          "x": 2,
+          "y": 0,
+          "w": 1,
+          "h": 1
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "095f7d5ed96c4000"
+            }
+          }
+        }
+      },
+      {
+        "id": "095f7d5ed9ec4000",
         "type": "cell",
         "attributes": {
           "x": 11,
@@ -304,13 +326,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f17f5d1c90000"
+              "id": "095f7d5ed9ec4000"
             }
           }
         }
       },
       {
-        "id": "095f28d0ccc90000",
+        "id": "095f7d5edaac4000",
         "type": "cell",
         "attributes": {
           "x": 4,
@@ -322,13 +344,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f28d0ccc90000"
+              "id": "095f7d5edaac4000"
             }
           }
         }
       },
       {
-        "id": "095f429f4f090000",
+        "id": "095f7d5edbec4000",
         "type": "cell",
         "attributes": {
           "x": 0,
@@ -340,31 +362,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f429f4f090000"
+              "id": "095f7d5edbec4000"
             }
           }
         }
       },
       {
-        "id": "095f43ad37490000",
-        "type": "cell",
-        "attributes": {
-          "x": 2,
-          "y": 0,
-          "w": 1,
-          "h": 1
-        },
-        "relationships": {
-          "view": {
-            "data": {
-              "type": "view",
-              "id": "095f43ad37490000"
-            }
-          }
-        }
-      },
-      {
-        "id": "095f43e90bc90000",
+        "id": "095f7d5edc6c4000",
         "type": "cell",
         "attributes": {
           "x": 2,
@@ -376,13 +380,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f43e90bc90000"
+              "id": "095f7d5edc6c4000"
             }
           }
         }
       },
       {
-        "id": "095f4554e2490000",
+        "id": "095f7d5edcec4000",
         "type": "cell",
         "attributes": {
           "x": 3,
@@ -394,13 +398,49 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f4554e2490000"
+              "id": "095f7d5edcec4000"
             }
           }
         }
       },
       {
-        "id": "095f459b17890000",
+        "id": "095f7d5edeec4000",
+        "type": "cell",
+        "attributes": {
+          "x": 1,
+          "y": 1,
+          "w": 1,
+          "h": 1
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "095f7d5edeec4000"
+            }
+          }
+        }
+      },
+      {
+        "id": "095f7d5edf6c4000",
+        "type": "cell",
+        "attributes": {
+          "x": 1,
+          "y": 0,
+          "w": 1,
+          "h": 1
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "095f7d5edf6c4000"
+            }
+          }
+        }
+      },
+      {
+        "id": "095f7d5edfec4000",
         "type": "cell",
         "attributes": {
           "x": 0,
@@ -412,49 +452,13 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f459b17890000"
+              "id": "095f7d5edfec4000"
             }
           }
         }
       },
       {
-        "id": "095f45c280090000",
-        "type": "cell",
-        "attributes": {
-          "x": 1,
-          "y": 0,
-          "w": 1,
-          "h": 1
-        },
-        "relationships": {
-          "view": {
-            "data": {
-              "type": "view",
-              "id": "095f45c280090000"
-            }
-          }
-        }
-      },
-      {
-        "id": "095f461ce7490000",
-        "type": "cell",
-        "attributes": {
-          "x": 1,
-          "y": 1,
-          "w": 1,
-          "h": 1
-        },
-        "relationships": {
-          "view": {
-            "data": {
-              "type": "view",
-              "id": "095f461ce7490000"
-            }
-          }
-        }
-      },
-      {
-        "id": "095f46423cc90000",
+        "id": "095f7d5ee06c4000",
         "type": "cell",
         "attributes": {
           "x": 3,
@@ -466,14 +470,32 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "095f46423cc90000"
+              "id": "095f7d5ee06c4000"
+            }
+          }
+        }
+      },
+      {
+        "id": "0960ccbeab1d5000",
+        "type": "cell",
+        "attributes": {
+          "x": 11,
+          "y": 8,
+          "w": 1,
+          "h": 1
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "0960ccbeab1d5000"
             }
           }
         }
       },
       {
         "type": "view",
-        "id": "095e3758dc490000",
+        "id": "095f7d5ec4ac4000",
         "attributes": {
           "name": "Stock details",
           "properties": {
@@ -573,7 +595,7 @@
       },
       {
         "type": "view",
-        "id": "095e3758e0090000",
+        "id": "095f7d5ec8ac4000",
         "attributes": {
           "name": "Price",
           "properties": {
@@ -629,7 +651,107 @@
       },
       {
         "type": "view",
-        "id": "095e3758e1c90000",
+        "id": "095f7d5ec96c4000",
+        "attributes": {
+          "name": "Insights",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "table",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: -1w)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"insight\" and r.symbol == v.symbol)\n  |> last()\n  |> toString()\n  |> group()",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#ffffff",
+                "name": "white",
+                "value": 0
+              }
+            ],
+            "tableOptions": {
+              "verticalTimeAxis": true,
+              "sortBy": {
+                "internalName": "",
+                "displayName": "",
+                "visible": false
+              },
+              "wrapping": "",
+              "fixFirstColumn": false
+            },
+            "fieldOptions": [
+              {
+                "internalName": "_start",
+                "displayName": "_start",
+                "visible": false
+              },
+              {
+                "internalName": "_stop",
+                "displayName": "_stop",
+                "visible": false
+              },
+              {
+                "internalName": "_time",
+                "displayName": "_time",
+                "visible": false
+              },
+              {
+                "internalName": "_field",
+                "displayName": "field",
+                "visible": true
+              },
+              {
+                "internalName": "_value",
+                "displayName": "value",
+                "visible": true
+              },
+              {
+                "internalName": "_measurement",
+                "displayName": "_measurement",
+                "visible": false
+              },
+              {
+                "internalName": "symbol",
+                "displayName": "symbol",
+                "visible": false
+              }
+            ],
+            "timeFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimalPlaces": {
+              "isEnforced": false,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095f7d5eca2c4000",
         "attributes": {
           "name": "Market price",
           "properties": {
@@ -740,107 +862,7 @@
       },
       {
         "type": "view",
-        "id": "095e3988b7890000",
-        "attributes": {
-          "name": "Insights",
-          "properties": {
-            "shape": "chronograf-v2",
-            "type": "table",
-            "queries": [
-              {
-                "text": "from(bucket: \"primary\")\n  |> range(start: -1w)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"insight\" and r.symbol == v.symbol)\n  |> last()\n  |> toString()\n  |> group()",
-                "editMode": "advanced",
-                "name": "",
-                "builderConfig": {
-                  "buckets": [],
-                  "tags": [
-                    {
-                      "key": "_measurement",
-                      "values": [],
-                      "aggregateFunctionType": "filter"
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "name": "mean"
-                    }
-                  ],
-                  "aggregateWindow": {
-                    "period": "auto",
-                    "fillValues": false
-                  }
-                }
-              }
-            ],
-            "colors": [
-              {
-                "id": "base",
-                "type": "text",
-                "hex": "#ffffff",
-                "name": "white",
-                "value": 0
-              }
-            ],
-            "tableOptions": {
-              "verticalTimeAxis": true,
-              "sortBy": {
-                "internalName": "",
-                "displayName": "",
-                "visible": false
-              },
-              "wrapping": "",
-              "fixFirstColumn": false
-            },
-            "fieldOptions": [
-              {
-                "internalName": "_start",
-                "displayName": "_start",
-                "visible": false
-              },
-              {
-                "internalName": "_stop",
-                "displayName": "_stop",
-                "visible": false
-              },
-              {
-                "internalName": "_time",
-                "displayName": "_time",
-                "visible": false
-              },
-              {
-                "internalName": "_field",
-                "displayName": "field",
-                "visible": true
-              },
-              {
-                "internalName": "_value",
-                "displayName": "value",
-                "visible": true
-              },
-              {
-                "internalName": "_measurement",
-                "displayName": "_measurement",
-                "visible": false
-              },
-              {
-                "internalName": "symbol",
-                "displayName": "symbol",
-                "visible": false
-              }
-            ],
-            "timeFormat": "YYYY-MM-DD HH:mm:ss",
-            "decimalPlaces": {
-              "isEnforced": false,
-              "digits": 2
-            },
-            "note": "",
-            "showNoteWhenEmpty": false
-          }
-        }
-      },
-      {
-        "type": "view",
-        "id": "095eec768ec90000",
+        "id": "095f7d5ed42c4000",
         "attributes": {
           "name": "Buy confidence",
           "properties": {
@@ -903,7 +925,7 @@
       },
       {
         "type": "view",
-        "id": "095ef140dd090000",
+        "id": "095f7d5ed4ac4000",
         "attributes": {
           "name": "Analysts recommendations",
           "properties": {
@@ -1008,7 +1030,7 @@
       },
       {
         "type": "view",
-        "id": "095f0eb099490000",
+        "id": "095f7d5ed52c4000",
         "attributes": {
           "name": "Change",
           "properties": {
@@ -1071,7 +1093,7 @@
       },
       {
         "type": "view",
-        "id": "095f11b927090000",
+        "id": "095f7d5ed5ac4000",
         "attributes": {
           "name": "Volume",
           "properties": {
@@ -1127,7 +1149,7 @@
       },
       {
         "type": "view",
-        "id": "095f1540df090000",
+        "id": "095f7d5ed62c4000",
         "attributes": {
           "name": "Change (%)",
           "properties": {
@@ -1190,7 +1212,7 @@
       },
       {
         "type": "view",
-        "id": "095f17b613490000",
+        "id": "095f7d5ed6ec4000",
         "attributes": {
           "name": "52 week low",
           "properties": {
@@ -1199,6 +1221,118 @@
             "queries": [
               {
                 "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field == \"fiftyTwoWeekLow\")\n  |> last()\n",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "prefix": "",
+            "tickPrefix": "",
+            "suffix": "",
+            "tickSuffix": "",
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#F95F53",
+                "name": "curacao",
+                "value": 0
+              }
+            ],
+            "decimalPlaces": {
+              "isEnforced": true,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095f7d5ed96c4000",
+        "attributes": {
+          "name": "DOW",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "single-stat",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r.index == \"Dow Jones Industrial Average\")\n  |> filter(fn: (r) => r._field == \"regularMarketPrice\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "prefix": "",
+            "tickPrefix": "",
+            "suffix": "",
+            "tickSuffix": "",
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#00C9FF",
+                "name": "laser",
+                "value": 0
+              }
+            ],
+            "decimalPlaces": {
+              "isEnforced": true,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095f7d5ed9ec4000",
+        "attributes": {
+          "name": "52 week high",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "single-stat",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field == \"fiftyTwoWeekHigh\")\n  |> last()\n",
                 "editMode": "advanced",
                 "name": "",
                 "builderConfig": {
@@ -1246,63 +1380,7 @@
       },
       {
         "type": "view",
-        "id": "095f17f5d1c90000",
-        "attributes": {
-          "name": "52 week high",
-          "properties": {
-            "shape": "chronograf-v2",
-            "type": "single-stat",
-            "queries": [
-              {
-                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field == \"fiftyTwoWeekHigh\")\n  |> last()\n",
-                "editMode": "advanced",
-                "name": "",
-                "builderConfig": {
-                  "buckets": [],
-                  "tags": [
-                    {
-                      "key": "_measurement",
-                      "values": [],
-                      "aggregateFunctionType": "filter"
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "name": "mean"
-                    }
-                  ],
-                  "aggregateWindow": {
-                    "period": "auto",
-                    "fillValues": false
-                  }
-                }
-              }
-            ],
-            "prefix": "",
-            "tickPrefix": "",
-            "suffix": "",
-            "tickSuffix": "",
-            "colors": [
-              {
-                "id": "base",
-                "type": "text",
-                "hex": "#7CE490",
-                "name": "honeydew",
-                "value": 0
-              }
-            ],
-            "decimalPlaces": {
-              "isEnforced": true,
-              "digits": 2
-            },
-            "note": "",
-            "showNoteWhenEmpty": false
-          }
-        }
-      },
-      {
-        "type": "view",
-        "id": "095f28d0ccc90000",
+        "id": "095f7d5edaac4000",
         "attributes": {
           "name": "Global Market State (relative)",
           "properties": {
@@ -1415,7 +1493,7 @@
       },
       {
         "type": "view",
-        "id": "095f429f4f090000",
+        "id": "095f7d5edbec4000",
         "attributes": {
           "name": "S&P 500 (%)",
           "properties": {
@@ -1478,63 +1556,7 @@
       },
       {
         "type": "view",
-        "id": "095f43ad37490000",
-        "attributes": {
-          "name": "NASDAQ",
-          "properties": {
-            "shape": "chronograf-v2",
-            "type": "single-stat",
-            "queries": [
-              {
-                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r.index == \"Dow Jones Industrial Average\")\n  |> filter(fn: (r) => r._field == \"regularMarketPrice\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-                "editMode": "advanced",
-                "name": "",
-                "builderConfig": {
-                  "buckets": [],
-                  "tags": [
-                    {
-                      "key": "_measurement",
-                      "values": [],
-                      "aggregateFunctionType": "filter"
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "name": "mean"
-                    }
-                  ],
-                  "aggregateWindow": {
-                    "period": "auto",
-                    "fillValues": false
-                  }
-                }
-              }
-            ],
-            "prefix": "",
-            "tickPrefix": "",
-            "suffix": "",
-            "tickSuffix": "",
-            "colors": [
-              {
-                "id": "base",
-                "type": "text",
-                "hex": "#00C9FF",
-                "name": "laser",
-                "value": 0
-              }
-            ],
-            "decimalPlaces": {
-              "isEnforced": true,
-              "digits": 2
-            },
-            "note": "",
-            "showNoteWhenEmpty": false
-          }
-        }
-      },
-      {
-        "type": "view",
-        "id": "095f43e90bc90000",
+        "id": "095f7d5edc6c4000",
         "attributes": {
           "name": "Dow (%)",
           "properties": {
@@ -1597,7 +1619,7 @@
       },
       {
         "type": "view",
-        "id": "095f4554e2490000",
+        "id": "095f7d5edcec4000",
         "attributes": {
           "name": "VIX (%)",
           "properties": {
@@ -1660,119 +1682,7 @@
       },
       {
         "type": "view",
-        "id": "095f459b17890000",
-        "attributes": {
-          "name": "S&P 500",
-          "properties": {
-            "shape": "chronograf-v2",
-            "type": "single-stat",
-            "queries": [
-              {
-                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r.index == \"S&P 500\")\n  |> filter(fn: (r) => r._field == \"regularMarketPrice\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-                "editMode": "advanced",
-                "name": "",
-                "builderConfig": {
-                  "buckets": [],
-                  "tags": [
-                    {
-                      "key": "_measurement",
-                      "values": [],
-                      "aggregateFunctionType": "filter"
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "name": "mean"
-                    }
-                  ],
-                  "aggregateWindow": {
-                    "period": "auto",
-                    "fillValues": false
-                  }
-                }
-              }
-            ],
-            "prefix": "",
-            "tickPrefix": "",
-            "suffix": "",
-            "tickSuffix": "",
-            "colors": [
-              {
-                "id": "base",
-                "type": "text",
-                "hex": "#00C9FF",
-                "name": "laser",
-                "value": 0
-              }
-            ],
-            "decimalPlaces": {
-              "isEnforced": true,
-              "digits": 2
-            },
-            "note": "",
-            "showNoteWhenEmpty": false
-          }
-        }
-      },
-      {
-        "type": "view",
-        "id": "095f45c280090000",
-        "attributes": {
-          "name": "NASDAQ",
-          "properties": {
-            "shape": "chronograf-v2",
-            "type": "single-stat",
-            "queries": [
-              {
-                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r.index == \"NASDAQ Composite\")\n  |> filter(fn: (r) => r._field == \"regularMarketPrice\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-                "editMode": "advanced",
-                "name": "",
-                "builderConfig": {
-                  "buckets": [],
-                  "tags": [
-                    {
-                      "key": "_measurement",
-                      "values": [],
-                      "aggregateFunctionType": "filter"
-                    }
-                  ],
-                  "functions": [
-                    {
-                      "name": "mean"
-                    }
-                  ],
-                  "aggregateWindow": {
-                    "period": "auto",
-                    "fillValues": false
-                  }
-                }
-              }
-            ],
-            "prefix": "",
-            "tickPrefix": "",
-            "suffix": "",
-            "tickSuffix": "",
-            "colors": [
-              {
-                "id": "base",
-                "type": "text",
-                "hex": "#00C9FF",
-                "name": "laser",
-                "value": 0
-              }
-            ],
-            "decimalPlaces": {
-              "isEnforced": true,
-              "digits": 2
-            },
-            "note": "",
-            "showNoteWhenEmpty": false
-          }
-        }
-      },
-      {
-        "type": "view",
-        "id": "095f461ce7490000",
+        "id": "095f7d5edeec4000",
         "attributes": {
           "name": "NASDAQ (%)",
           "properties": {
@@ -1835,7 +1745,119 @@
       },
       {
         "type": "view",
-        "id": "095f46423cc90000",
+        "id": "095f7d5edf6c4000",
+        "attributes": {
+          "name": "NASDAQ",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "single-stat",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r.index == \"NASDAQ Composite\")\n  |> filter(fn: (r) => r._field == \"regularMarketPrice\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "prefix": "",
+            "tickPrefix": "",
+            "suffix": "",
+            "tickSuffix": "",
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#00C9FF",
+                "name": "laser",
+                "value": 0
+              }
+            ],
+            "decimalPlaces": {
+              "isEnforced": true,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095f7d5edfec4000",
+        "attributes": {
+          "name": "S&P 500",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "single-stat",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r.index == \"S&P 500\")\n  |> filter(fn: (r) => r._field == \"regularMarketPrice\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "prefix": "",
+            "tickPrefix": "",
+            "suffix": "",
+            "tickSuffix": "",
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#00C9FF",
+                "name": "laser",
+                "value": 0
+              }
+            ],
+            "decimalPlaces": {
+              "isEnforced": true,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "095f7d5ee06c4000",
         "attributes": {
           "name": "VIX",
           "properties": {
@@ -1890,7 +1912,63 @@
         }
       },
       {
-        "id": "095e3758ee9cd000",
+        "type": "view",
+        "id": "0960ccbeab1d5000",
+        "attributes": {
+          "name": "P/E",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "single-stat",
+            "queries": [
+              {
+                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field == \"trailingPE\")\n  |> last()\n",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "prefix": "",
+            "tickPrefix": "",
+            "suffix": "",
+            "tickSuffix": "",
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#00C9FF",
+                "name": "laser",
+                "value": 0
+              }
+            ],
+            "decimalPlaces": {
+              "isEnforced": true,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "id": "095f7d5f07c9b000",
         "type": "variable",
         "attributes": {
           "name": "symbol",

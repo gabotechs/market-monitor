@@ -5,10 +5,10 @@ from dataclasses import dataclass
 from logging import Logger
 from typing import List
 
-from influxdb_client import Point  # type: ignore
-from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync  # type: ignore
+from influxdb_client import Point
+from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
 
-from .metric_collector import MetricCollector, MetricEntry
+from .metric_collector import MetricCollector
 from .utils.flatten_dict import flatten_dict
 
 
