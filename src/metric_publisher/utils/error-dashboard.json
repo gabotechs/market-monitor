@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "version": "1",
+    "type": "dashboard",
+    "name": "Errors-Template",
+    "description": "template created from dashboard: Errors"
+  },
+  "content": {
+    "data": {
+      "type": "dashboard",
+      "attributes": {
+        "name": "Errors",
+        "description": ""
+      },
+      "relationships": {
+        "label": {
+          "data": []
+        },
+        "cell": {
+          "data": [
+            {
+              "type": "cell",
+              "id": "096171aa08dd5000"
+            }
+          ]
+        },
+        "variable": {
+          "data": []
+        }
+      }
+    },
+    "included": [
+      {
+        "id": "096171aa08dd5000",
+        "type": "cell",
+        "attributes": {
+          "x": 0,
+          "y": 0,
+          "w": 12,
+          "h": 4
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "096171aa08dd5000"
+            }
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "096171aa08dd5000",
+        "attributes": {
+          "name": "Name this Cell",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "table",
+            "queries": [
+              {
+                "text": "import \"strings\"\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"errors\")\n   |> map(fn: (r) => ({ \n  _time_reverse: -int(v: r._time),\n  _value: \"[\"+strings.substring(end: 10, start: 0, v: string(v: r._time))+ \" \" + strings.substring(end: 19, start: 11, v: string(v: r._time))+\"] \" + r._value\n   }))",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#ffffff",
+                "name": "white",
+                "value": 0
+              }
+            ],
+            "tableOptions": {
+              "verticalTimeAxis": true,
+              "sortBy": {
+                "internalName": "_time_reverse",
+                "displayName": "_time_reverse",
+                "visible": false
+              },
+              "wrapping": "",
+              "fixFirstColumn": false
+            },
+            "fieldOptions": [
+              {
+                "internalName": "_start",
+                "displayName": "_start",
+                "visible": false
+              },
+              {
+                "internalName": "_stop",
+                "displayName": "_stop",
+                "visible": false
+              },
+              {
+                "internalName": "_time",
+                "displayName": "time",
+                "visible": false
+              },
+              {
+                "internalName": "_value",
+                "displayName": "value",
+                "visible": true
+              },
+              {
+                "internalName": "_field",
+                "displayName": "_field",
+                "visible": false
+              },
+              {
+                "internalName": "_measurement",
+                "displayName": "_measurement",
+                "visible": false
+              },
+              {
+                "internalName": "_time_reverse",
+                "displayName": "_time_reverse",
+                "visible": false
+              }
+            ],
+            "timeFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimalPlaces": {
+              "isEnforced": false,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      }
+    ]
+  },
+  "labels": []
+}
