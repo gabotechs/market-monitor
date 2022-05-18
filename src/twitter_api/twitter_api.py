@@ -1,4 +1,3 @@
-import tweepy
 from typing import List, Dict, Optional
 from dataclasses import dataclass
 from datetime import datetime
@@ -6,6 +5,7 @@ import dateutil.parser
 import httpx
 import platform
 import logging
+import tweepy
 
 USER_IDS = [
     "@CNBC",
@@ -17,7 +17,7 @@ USER_IDS = [
     "@Stephanie_Link",
     "@nytimesbusiness",
     "@IBDinvestors",
-    "@WSJDealJournal"
+    # "@WSJDealJournal"
 ]
 
 HOST = "https://api.twitter.com"
@@ -30,6 +30,11 @@ class Tweet:
     timestamp: datetime
 
 
+# https://github.com/influxdata/ui/issues/4609
+def _process_text(text: str) -> str:
+    return text.replace('\n', ' ')
+
+
 class TwitterApi:
     def __init__(self, token: str, logger: logging.Logger):
         self.logger = logger
@@ -37,7 +42,7 @@ class TwitterApi:
         self.client = httpx.AsyncClient(
             headers={
                 'User-Agent': platform.python_version(),
-                'Authorization': 'Bearer '+token
+                'Authorization': 'Bearer ' + token
             }
         )
         self.token = token
@@ -56,7 +61,7 @@ class TwitterApi:
         for user in data['data']:
             if 'id' not in user or 'name' not in user:
                 raise Exception('Badly formed twitter response')
-            user_ids[user['id']] = "@"+user['name']
+            user_ids[user['id']] = "@" + user['name']
         self.user_ids = user_ids
         return user_ids
 
@@ -65,7 +70,7 @@ class TwitterApi:
         if start_time:
             params['start_time'] = start_time.strftime("%Y-%m-%dT%H:%M:%SZ")
         response = await self.client.get(
-            url=HOST+f"/2/users/{user_id}/tweets",
+            url=HOST + f"/2/users/{user_id}/tweets",
             params=params
         )
         data = response.json()
@@ -77,7 +82,7 @@ class TwitterApi:
                 raise Exception('Badly formed twitter response')
             tweets.append(Tweet(
                 user=self.user_ids[user_id],
-                content=tweet['text'],
+                content=_process_text(tweet['text']),
                 timestamp=dateutil.parser.isoparse(tweet['created_at'])
             ))
         return tweets
