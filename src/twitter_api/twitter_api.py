@@ -95,7 +95,7 @@ class TwitterApi:
 
         tweets: List[Tweet] = []
         last_requested = None
-        self.logger.info(f"collecting tweets since {last_requested}...")
+        self.logger.info(f"collecting tweets since {self.last_requested}...")
         for user_id in self.user_ids:
             user_tweets = await self.__get_user_tweets(user_id, self.last_requested)
             for tweet in user_tweets:
