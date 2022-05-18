@@ -2,7 +2,6 @@ import tweepy
 from typing import List, Optional
 from dataclasses import dataclass
 from datetime import datetime
-import time
 import dateutil.parser
 import httpx
 import platform
@@ -92,11 +91,3 @@ class TwitterApi:
         if last_requested:
             self.last_requested = last_requested
         return tweets
-
-
-if __name__ == '__main__':
-    bearer_token = "AAAAAAAAAAAAAAAAAAAAAHipcQEAAAAAK7jM9ngfvlQOrq0PJ12cSmhIZbY%3DLX7KMWu3SXfMizN5ijXXg6vFK6jnaF5HKBSetVqy92iuPy5Jj6"
-    api = TwitterApi(bearer_token)
-    retrieved = api.get_tweets()
-    re = api.get_tweets()
-    print()
