@@ -51,35 +51,40 @@ class InfluxMetricPublisher:
     async def __collect_points(self) -> List[Point]:
         now = int(time.time()*1e9)
         points: List[Point] = []
+
+        tasks = []
         for plugin_spec in self.plugins:
             if now - plugin_spec.last_queried < plugin_spec.interval_ns:
                 continue
             plugin_spec.last_queried = now
 
-            try:
-                metrics = await plugin_spec.collector.get_metrics()
-            except Exception as e:
-                msg = f"Error on plugin {plugin_spec.collector.__class__.__name__}: {e}"
-                self.logger.error(msg)
-                print(e)
-                traceback.print_exc()
-                points.append(Point.measurement(self.ERROR_MEASURE).time(now).field('error', msg))
-                continue
+            async def task(plugin: PluginSpec):
+                try:
+                    metrics = await plugin.collector.get_metrics()
+                except Exception as e:
+                    msg = f"Error on plugin {plugin.collector.__class__.__name__}: {e}"
+                    self.logger.error(msg)
+                    print(e)
+                    traceback.print_exc()
+                    points.append(Point.measurement(self.ERROR_MEASURE).time(now).field('error', msg))
+                    return
 
-            for metric in metrics:
-                p = Point.measurement(metric.measure_name)
-                if metric.tags:
-                    for k, v in metric.tags.items():
-                        p = p.tag(k, v)
-                if metric.time:
-                    p = p.time(metric.time)
-                else:
-                    p = p.time(now)
-                flatten_data = flatten_dict(metric.data)
-                for k, v in flatten_data.items():
-                    p.field(k, v)
-                points.append(p)
+                for metric in metrics:
+                    p = Point.measurement(metric.measure_name)
+                    if metric.tags:
+                        for k, v in metric.tags.items():
+                            p = p.tag(k, v)
+                    if metric.time:
+                        p = p.time(metric.time)
+                    else:
+                        p = p.time(now)
+                    flatten_data = flatten_dict(metric.data)
+                    for k, v in flatten_data.items():
+                        p.field(k, v)
+                    points.append(p)
+            tasks.append(task(plugin_spec))
 
+        await asyncio.gather(*tasks)
         return points
 
     async def loop(self):
