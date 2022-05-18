@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   main:
+    init: true
     build:
       context: .
 
