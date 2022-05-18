@@ -2141,7 +2141,7 @@
             "type": "single-stat",
             "queries": [
               {
-                "text": "import \"influxdata/influxdb/schema\"\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field != \"symbol\")\n  |> last()\n  |> schema.fieldsAsCols()\n  |> map(fn: (r) => {\n    v = if r.marketState == \"PRE\" then\n      \"pre-market\"\n    else\n      \"regular\"\n    return { r with _value: v }\n  })",
+                "text": "import \"influxdata/influxdb/schema\"\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"quote\" and r.symbol == v.symbol and r._field != \"symbol\")\n  |> last()\n  |> schema.fieldsAsCols()\n  |> map(fn: (r) => {\n    v = if r.marketState == \"PRE\" then\n      \"pre-market\"\n    else if r.marketState == \"POST\" then\n      \"post-market\"\n    else\n      \"regular\"\n    return { r with _value: v }\n  })",
                 "editMode": "advanced",
                 "name": "",
                 "builderConfig": {
