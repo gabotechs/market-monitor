@@ -1426,12 +1426,12 @@
         "type": "view",
         "id": "095f7d5edaac4000",
         "attributes": {
-          "name": "Global Market State (relative)",
+          "name": "Global Market State (%)",
           "properties": {
             "shape": "chronograf-v2",
             "queries": [
               {
-                "text": "import \"influxdata/influxdb/schema\"\n\ndata = from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r._field == \"regularMarketPrice\" and r.index != \"\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n\nf = data\n  |> first()\n  |> pivot(columnKey: [\"index\"], rowKey: [\"_field\"], valueColumn: \"_value\")\n  |> findRecord(\n        fn: (key) => true,\n        idx: 0,\n    )\n\ndata\n  |> map(fn: (r) => {\n    div = if r.index == \"S&P 500\" then\n      f[\"S&P 500\"]\n    else if r.index == \"Dow Jones Industrial Average\" then\n      f[\"Dow Jones Industrial Average\"]\n    else if r.index == \"NASDAQ Composite\" then\n      f[\"NASDAQ Composite\"]\n    else if r.index == \"CBOE Volatility Index\" then\n      f[\"CBOE Volatility Index\"]\n    else\n      1.0\n    return {r with _value: r._value / div }\n  })",
+                "text": "import \"influxdata/influxdb/schema\"\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"indexes\" and r._field == \"regularMarketChangePercent\" and r.index != \"CBOE Volatility Index\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n\n",
                 "editMode": "advanced",
                 "name": "",
                 "builderConfig": {
