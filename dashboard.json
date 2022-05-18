@@ -2015,13 +2015,13 @@
         "type": "view",
         "id": "0960edc1709d5000",
         "attributes": {
-          "name": "Name this Cell",
+          "name": "Twitter",
           "properties": {
             "shape": "chronograf-v2",
             "type": "table",
             "queries": [
               {
-                "text": "import \"influxdata/influxdb/schema\"\nimport \"strings\"\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"twitter\")\n  |> schema.fieldsAsCols()\n  |> map(fn: (r) => ({ \n  _time_reverse: - int(v: r._time),\n  _value: \"[\"+strings.substring(end: 10, start: 0, v: string(v: r._time))+ \" \" + strings.substring(end: 19, start: 11, v: string(v: r._time))+\" UTC] \" + r.user + \": \" + r.content\n   }))",
+                "text": "import \"influxdata/influxdb/schema\"\nimport \"strings\"\n\nfrom(bucket: \"primary\")\n  |> range(start: -10h, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"twitter\")\n  |> schema.fieldsAsCols()\n  |> map(fn: (r) => ({ \n  _time_reverse: - int(v: r._time),\n  _value: \"[\"+strings.substring(end: 10, start: 0, v: string(v: r._time))+ \" \" + strings.substring(end: 19, start: 11, v: string(v: r._time))+\" UTC] \" + r.user + \": \" + r.content\n   }))",
                 "editMode": "advanced",
                 "name": "",
                 "builderConfig": {
