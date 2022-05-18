@@ -5,7 +5,7 @@ from typing import List, Optional
 
 from pyargparse import PyArgs
 
-import logs
+from collectable_logger import CollectableLogger
 from metric_collectors.yahoo_quotes_collector import YahooQuotesCollector
 from metric_collectors.yahoo_stock_details_collector import YahooStockDetailsCollector
 from metric_collectors.yahoo_insights_collector import YahooInsightsCollector
@@ -22,12 +22,13 @@ class Config(PyArgs):
     influxdb_token: str
     influxdb_bucket: str = 'primary'
     influxdb_organization: str = 'primary'
+    log_level: str = 'INFO'
     twitter_token: Optional[str] = None
 
 
 async def main():
     config = Config(os.environ.get("CONFIG_PATH") or 'config.yml')
-    logger = logs.init_logger()
+    logger = CollectableLogger("main", config.log_level)
     logger.info("Initializing metric publisher...")
     publisher = InfluxMetricPublisher(
         host=config.influxdb_host,
@@ -41,13 +42,14 @@ async def main():
     await publisher.wait_available()
 
     if config.twitter_token:
-        publisher.register_plugin(TwitterTweetCollector(config.twitter_token), interval=3600)
+        publisher.register_plugin(TwitterTweetCollector(config.twitter_token, logger), interval=3600)
     else:
         logger.warning("TWITTER_TOKEN not configured, tweeter feed is not available")
     publisher.register_plugin(YahooIndexesCollector(), interval=5)
     publisher.register_plugin(YahooQuotesCollector(config.symbols), interval=5)
     publisher.register_plugin(YahooInsightsCollector(config.symbols), interval=3600)
     publisher.register_plugin(YahooStockDetailsCollector(config.symbols), interval=3600)
+    publisher.register_plugin(logger, interval=5)
 
     logger.info(f"monitoring symbols {', '.join(config.symbols)}")
     try:

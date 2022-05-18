@@ -62,11 +62,9 @@ class InfluxMetricPublisher:
                 try:
                     metrics = await plugin.collector.get_metrics()
                 except Exception as e:
-                    msg = f"Error on plugin {plugin.collector.__class__.__name__}: {e}"
-                    self.logger.error(msg)
+                    self.logger.error(f"Error on plugin {plugin.collector.__class__.__name__}: {e}")
                     print(e)
                     traceback.print_exc()
-                    points.append(Point.measurement(self.ERROR_MEASURE).time(now).field('error', msg))
                     return
 
                 for metric in metrics:

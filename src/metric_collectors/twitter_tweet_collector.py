@@ -1,5 +1,6 @@
 from typing import List
 import time
+import logging
 
 from metric_publisher.metric_collector import MetricCollector, MetricEntry
 from twitter_api import TwitterApi
@@ -8,8 +9,9 @@ from twitter_api import TwitterApi
 class TwitterTweetCollector(MetricCollector):
     MEASURE_NAME = "twitter"
 
-    def __init__(self, token: str):
-        self.api = TwitterApi(token)
+    def __init__(self, token: str, logger: logging.Logger):
+        self.logger = logger
+        self.api = TwitterApi(token, logger)
 
     async def get_metrics(self) -> List[MetricEntry]:
         new_tweets = await self.api.get_tweets()

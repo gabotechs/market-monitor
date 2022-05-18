@@ -1,10 +1,11 @@
 import tweepy
-from typing import List, Optional
+from typing import List, Dict, Optional
 from dataclasses import dataclass
 from datetime import datetime
 import dateutil.parser
 import httpx
 import platform
+import logging
 
 USER_IDS = [
     "@CNBC",
@@ -30,7 +31,8 @@ class Tweet:
 
 
 class TwitterApi:
-    def __init__(self, token: str):
+    def __init__(self, token: str, logger: logging.Logger):
+        self.logger = logger
         self.api = tweepy.Client(bearer_token=token)
         self.client = httpx.AsyncClient(
             headers={
@@ -39,10 +41,10 @@ class TwitterApi:
             }
         )
         self.token = token
-        self.user_ids = None
+        self.user_ids: Optional[Dict[str, str]] = None
         self.last_requested = None
 
-    async def __load_user_ids(self):
+    async def __load_user_ids(self) -> Dict[str, str]:
         response = await self.client.get(
             url=HOST + "/2/users/by",
             params={'usernames': ','.join([x.replace("@", "") for x in USER_IDS])}
@@ -56,6 +58,7 @@ class TwitterApi:
                 raise Exception('Badly formed twitter response')
             user_ids[user['id']] = "@"+user['name']
         self.user_ids = user_ids
+        return user_ids
 
     async def __get_user_tweets(self, user_id: str, start_time: Optional[datetime]) -> List[Tweet]:
         params = {'tweet.fields': 'created_at'}
@@ -81,13 +84,20 @@ class TwitterApi:
 
     async def get_tweets(self) -> List[Tweet]:
         if self.user_ids is None:
-            await self.__load_user_ids()
+            self.logger.info("loading user ids...")
+            loaded_user_ids = await self.__load_user_ids()
+            self.logger.info(f"{len(loaded_user_ids)} users loaded correctly")
 
         tweets: List[Tweet] = []
         last_requested = None
+        self.logger.info(f"collecting tweets since {last_requested}...")
         for user_id in self.user_ids:
             user_tweets = await self.__get_user_tweets(user_id, self.last_requested)
+            for tweet in user_tweets:
+                if last_requested is None or tweet.timestamp > last_requested:
+                    last_requested = tweet.timestamp
             tweets = [*tweets, *user_tweets]
+        self.logger.info(f"collected {len(tweets)} new tweets")
         if last_requested:
             self.last_requested = last_requested
         return tweets
