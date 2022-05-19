@@ -132,7 +132,7 @@
         "type": "cell",
         "attributes": {
           "x": 4,
-          "y": 14,
+          "y": 11,
           "w": 3,
           "h": 14
         },
@@ -168,7 +168,7 @@
         "type": "cell",
         "attributes": {
           "x": 0,
-          "y": 14,
+          "y": 11,
           "w": 4,
           "h": 11
         },
@@ -204,8 +204,8 @@
         "type": "cell",
         "attributes": {
           "x": 0,
-          "y": 5,
-          "w": 3,
+          "y": 8,
+          "w": 4,
           "h": 3
         },
         "relationships": {
@@ -221,8 +221,8 @@
         "id": "095f7d5ed4ac4000",
         "type": "cell",
         "attributes": {
-          "x": 0,
-          "y": 8,
+          "x": 7,
+          "y": 11,
           "w": 3,
           "h": 3
         },
@@ -509,9 +509,9 @@
         "id": "0960edc1709d5000",
         "type": "cell",
         "attributes": {
-          "x": 3,
+          "x": 4,
           "y": 5,
-          "w": 8,
+          "w": 7,
           "h": 6
         },
         "relationships": {
@@ -545,9 +545,9 @@
         "id": "0962b0ae81efa000",
         "type": "cell",
         "attributes": {
-          "x": 3,
-          "y": 11,
-          "w": 8,
+          "x": 0,
+          "y": 5,
+          "w": 4,
           "h": 3
         },
         "relationships": {
@@ -2218,7 +2218,7 @@
             "shape": "chronograf-v2",
             "queries": [
               {
-                "text": "from(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"twitter\")\n  |> filter(fn: (r) => r[\"_field\"] == \"sentiment.compound\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+                "text": "from(bucket: \"primary\")\n  |> range(start: -1w)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"twitter\")\n  |> filter(fn: (r) => r[\"_field\"] == \"sentiment.compound\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
                 "editMode": "advanced",
                 "name": "",
                 "builderConfig": {
