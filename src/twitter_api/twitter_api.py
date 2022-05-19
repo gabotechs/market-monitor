@@ -71,6 +71,8 @@ class TwitterApi:
             url=HOST + f"/2/users/{user_id}/tweets",
             params=params
         )
+        if response.status_code != 200:
+            raise Exception(f'Received a {response.status_code} code from twitter')
         data = response.json()
         if 'data' not in data:
             raise Exception('Badly formed twitter response')
