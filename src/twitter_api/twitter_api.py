@@ -5,6 +5,7 @@ import dateutil.parser
 import httpx
 import platform
 import logging
+import json
 
 USER_IDS = [
     "@CNBC",
@@ -79,7 +80,7 @@ class TwitterApi:
         tweets = []
         for tweet in data['data']:
             if 'created_at' not in tweet or 'text' not in tweet:
-                raise Exception('Badly formed twitter response')
+                raise Exception(f'Badly formed twitter response {json.dumps(tweet)}')
             tweets.append(Tweet(
                 user=self.user_ids[user_id],
                 content=_process_text(tweet['text']),
