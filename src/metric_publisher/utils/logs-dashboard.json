@@ -20,7 +20,11 @@
           "data": [
             {
               "type": "cell",
-              "id": "0962060dbffa8000"
+              "id": "09620732f826c000"
+            },
+            {
+              "type": "cell",
+              "id": "0962eb9ef5efa000"
             }
           ]
         },
@@ -31,11 +35,29 @@
     },
     "included": [
       {
-        "id": "0962060dbffa8000",
+        "id": "09620732f826c000",
         "type": "cell",
         "attributes": {
           "x": 0,
           "y": 0,
+          "w": 12,
+          "h": 6
+        },
+        "relationships": {
+          "view": {
+            "data": {
+              "type": "view",
+              "id": "09620732f826c000"
+            }
+          }
+        }
+      },
+      {
+        "id": "0962eb9ef5efa000",
+        "type": "cell",
+        "attributes": {
+          "x": 0,
+          "y": 6,
           "w": 12,
           "h": 8
         },
@@ -43,14 +65,14 @@
           "view": {
             "data": {
               "type": "view",
-              "id": "0962060dbffa8000"
+              "id": "0962eb9ef5efa000"
             }
           }
         }
       },
       {
         "type": "view",
-        "id": "0962060dbffa8000",
+        "id": "09620732f826c000",
         "attributes": {
           "name": "Logs",
           "properties": {
@@ -59,6 +81,106 @@
             "queries": [
               {
                 "text": "import \"strings\"\nimport \"influxdata/influxdb/schema\"\n\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"logs\")\n  |> schema.fieldsAsCols()\n  |> map(fn: (r) => ({ \n  _time_reverse: -int(v: r._time),\n  _value: \"[\"+strings.substring(end: 10, start: 0, v: string(v: r._time))+ \" \" + strings.substring(end: 19, start: 11, v: string(v: r._time))+\"] [\" + r.level + \"] \" + r.msg\n   }))",
+                "editMode": "advanced",
+                "name": "",
+                "builderConfig": {
+                  "buckets": [],
+                  "tags": [
+                    {
+                      "key": "_measurement",
+                      "values": [],
+                      "aggregateFunctionType": "filter"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "name": "mean"
+                    }
+                  ],
+                  "aggregateWindow": {
+                    "period": "auto",
+                    "fillValues": false
+                  }
+                }
+              }
+            ],
+            "colors": [
+              {
+                "id": "base",
+                "type": "text",
+                "hex": "#ffffff",
+                "name": "white",
+                "value": 0
+              }
+            ],
+            "tableOptions": {
+              "verticalTimeAxis": true,
+              "sortBy": {
+                "internalName": "_time_reverse",
+                "displayName": "_time_reverse",
+                "visible": false
+              },
+              "wrapping": "",
+              "fixFirstColumn": false
+            },
+            "fieldOptions": [
+              {
+                "internalName": "_start",
+                "displayName": "_start",
+                "visible": false
+              },
+              {
+                "internalName": "_stop",
+                "displayName": "_stop",
+                "visible": false
+              },
+              {
+                "internalName": "_time",
+                "displayName": "time",
+                "visible": false
+              },
+              {
+                "internalName": "_value",
+                "displayName": "value",
+                "visible": true
+              },
+              {
+                "internalName": "_field",
+                "displayName": "_field",
+                "visible": false
+              },
+              {
+                "internalName": "_measurement",
+                "displayName": "_measurement",
+                "visible": false
+              },
+              {
+                "internalName": "_time_reverse",
+                "displayName": "_time_reverse",
+                "visible": false
+              }
+            ],
+            "timeFormat": "YYYY-MM-DD HH:mm:ss",
+            "decimalPlaces": {
+              "isEnforced": false,
+              "digits": 2
+            },
+            "note": "",
+            "showNoteWhenEmpty": false
+          }
+        }
+      },
+      {
+        "type": "view",
+        "id": "0962eb9ef5efa000",
+        "attributes": {
+          "name": "Errors",
+          "properties": {
+            "shape": "chronograf-v2",
+            "type": "table",
+            "queries": [
+              {
+                "text": "import \"strings\"\nimport \"influxdata/influxdb/schema\"\n\n\nfrom(bucket: \"primary\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"logs\")\n  |> schema.fieldsAsCols()\n  |> filter(fn: (r) => r.level == \"error\")\n  |> map(fn: (r) => ({ \n  _time_reverse: -int(v: r._time),\n  _value: \"[\"+strings.substring(end: 10, start: 0, v: string(v: r._time))+ \" \" + strings.substring(end: 19, start: 11, v: string(v: r._time))+\"] [\" + r.level + \"] \" + r.msg\n   }))",
                 "editMode": "advanced",
                 "name": "",
                 "builderConfig": {
