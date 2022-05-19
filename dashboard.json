@@ -1496,18 +1496,16 @@
                 ],
                 "label": "",
                 "prefix": "",
-                "suffix": "",
-                "base": "10",
+                "suffix": " %",
+                "base": "2",
                 "scale": "linear"
               }
             },
             "type": "xy",
             "staticLegend": {
               "colorizeRows": true,
-              "heightRatio": 0.21610169491525424,
               "opacity": 1,
               "orientationThreshold": 100000000,
-              "valueAxis": "y",
               "widthRatio": 1
             },
             "geom": "step",
