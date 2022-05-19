@@ -1,3 +1,4 @@
+import asyncio
 from typing import List, Dict, Optional
 from dataclasses import dataclass
 from datetime import datetime
@@ -46,13 +47,15 @@ class TwitterApi:
         )
         self.token = token
         self.user_ids: Optional[Dict[str, str]] = None
-        self.last_requested = None
+        self.last_requested: Optional[datetime] = None
 
     async def __load_user_ids(self) -> Dict[str, str]:
         response = await self.client.get(
             url=HOST + "/2/users/by",
             params={'usernames': ','.join([x.replace("@", "") for x in USER_IDS])}
         )
+        if response.status_code != 200:
+            raise Exception(f'Received a {response.status_code} while getting user ids from twitter')
         data = response.json()
         if 'data' not in data or type(data['data']) != list:
             raise Exception('Badly formed twitter response')
@@ -73,7 +76,7 @@ class TwitterApi:
             params=params
         )
         if response.status_code != 200:
-            raise Exception(f'Received a {response.status_code} code from twitter')
+            raise Exception(f'Received a {response.status_code} code while getting tweets for {user_id} from twitter')
         data = response.json()
         if 'data' not in data:
             return []
@@ -94,16 +97,30 @@ class TwitterApi:
             loaded_user_ids = await self.__load_user_ids()
             self.logger.info(f"{len(loaded_user_ids)} users loaded correctly")
 
-        tweets: List[Tweet] = []
-        last_requested = None
         self.logger.info(f"collecting tweets since {self.last_requested}...")
+        tweets: List[Tweet] = []
+        last_requested: Dict[str, Optional[datetime]] = {'ref': None}
+        fail_count = {'ref': 0}
+        tasks = []
         for user_id in self.user_ids:
-            user_tweets = await self.__get_user_tweets(user_id, self.last_requested)
-            for tweet in user_tweets:
-                if last_requested is None or tweet.timestamp > last_requested:
-                    last_requested = tweet.timestamp
-            tweets = [*tweets, *user_tweets]
+            async def task(tweets_collector: List[Tweet]):
+                if fail_count['ref'] > len(self.user_ids) / 3:
+                    return
+                try:
+                    user_tweets = await self.__get_user_tweets(user_id, self.last_requested)
+                except Exception as e:
+                    self.logger.error(f'Failed to get tweets: {e}')
+                    fail_count['ref'] += 1
+                    if fail_count['ref'] > len(self.user_ids) / 3:
+                        raise Exception(f'Too much failures getting tweets')
+                    return
+                for tweet in user_tweets:
+                    if last_requested['ref'] is None or tweet.timestamp > last_requested['ref']:
+                        last_requested['ref'] = tweet.timestamp
+                tweets_collector.extend(user_tweets)
+            tasks.append(task(tweets))
+        await asyncio.gather(*tasks)
         self.logger.info(f"collected {len(tweets)} new tweets")
-        if last_requested:
-            self.last_requested = last_requested
+        if last_requested['ref']:
+            self.last_requested = last_requested['ref']
         return tweets
