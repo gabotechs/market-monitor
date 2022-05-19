@@ -1,7 +1,7 @@
-tweepy==4.9.0
 pyargparse==0.1.8
 aiohttp==3.8.1
 pydantic==1.9.0
 influxdb-client[async]==1.28.0
 httpx==0.22.0
+vaderSentiment==3.3.2
 coloredlogs==15.0.1
