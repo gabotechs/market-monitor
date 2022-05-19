@@ -75,7 +75,7 @@ class TwitterApi:
             raise Exception(f'Received a {response.status_code} code from twitter')
         data = response.json()
         if 'data' not in data:
-            raise Exception('Badly formed twitter response')
+            return []
         tweets = []
         for tweet in data['data']:
             if 'created_at' not in tweet or 'text' not in tweet:
