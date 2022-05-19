@@ -10,8 +10,10 @@ Currently, only installation through docker is supported, so this steps assume t
 you have docker installed in your machine. If you don't have it installed, check this 
 link https://docs.docker.com/get-docker/
 
-- Clone the project `git clone https://github.com/GabrielMusat/market-monitor.git`
-- Navigate to the projects dir `cd market-monitor`
+- Clone the project and navigate to it
+```
+git clone https://github.com/GabrielMusat/market-monitor.git && cd market-monitor
+```
 - Create your `.env` file. You can copy-paste `.env.example` and change the values.
 It should contain this info:
 ```python
@@ -27,7 +29,10 @@ SYMBOLS="AAPL,TSLA,MSFT,GOOG,NVDA,AMD,NET"
 TWITTER_TOKEN="your-apps-bearer-token"
 ```
 > **_Note:_** Currently, the maximum number of symbols is 10
-- Execute `docker compose up -d`, this will run this project in the background
+- Bring up the dependencies and leave them running in the background
+```
+docker compose up -d
+```
 - On your browser, go to http://localhost:8086 and login with username "admin" and
 the password from your `.env` file under the `INFLUXDB_ADMIN_PASSWORD` key
 - Once logged in, in the navigation bar at the left, go to "Boards", click on "Create Dashboard"
