@@ -5,7 +5,6 @@ import dateutil.parser
 import httpx
 import platform
 import logging
-import tweepy
 
 USER_IDS = [
     "@CNBC",
@@ -38,7 +37,6 @@ def _process_text(text: str) -> str:
 class TwitterApi:
     def __init__(self, token: str, logger: logging.Logger):
         self.logger = logger
-        self.api = tweepy.Client(bearer_token=token)
         self.client = httpx.AsyncClient(
             headers={
                 'User-Agent': platform.python_version(),
