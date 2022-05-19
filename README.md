@@ -40,6 +40,10 @@ and on "Import Dashboards" in the dropdown. The file you want to import lives in
 of this project, and its name is `dashboard.json`
 - Once imported, a new dashboard named "Market" should be available
 
+# Config changes
+
+Edit your `.env` file with the new config. After that, just execute `docker compose up -d`
+
 # Update
 
 - Inside the cloned project directory, pull the latest changes `git pull`
