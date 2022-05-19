@@ -21,8 +21,8 @@ It should contain this info:
 # over a network, you may want to make this a secure string.
 INFLUXDB_TOKEN="some-token"
 # INFLUXDB_ADMIN_PASSWORD is the password that will be used to access the dashboard
-# as the "admin" user.
-INFLUXDB_ADMIN_PASSWORD="some-pass"
+# as the "admin" user. It must be at least 8 characters.
+INFLUXDB_ADMIN_PASSWORD="more-than-8-chars"
 # SYMBOLS is a comma sepparated list with the symbols you want to monitor
 SYMBOLS="AAPL,TSLA,MSFT,GOOG,NVDA,AMD,NET"
 # (optional) TWITTER_TOKEN is the bearer token of your twitter application
