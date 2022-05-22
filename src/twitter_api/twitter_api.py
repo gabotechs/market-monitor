@@ -8,18 +8,42 @@ import platform
 import logging
 import json
 
-USER_IDS = [
+USER_IDS = {
     "@CNBC",
     "@Benzinga",
     "@Stocktwits",
-    "@BreakoutStocks",
-    "@bespokeinvest",
     "@WSJMarkets",
+    "@bespokeinvest",
+    "@BreakoutStocks",
     "@Stephanie_Link",
     "@nytimesbusiness",
     "@IBDinvestors",
-    # "@WSJDealJournal"
-]
+    "@WSJDealJournal",
+    "@elonmusk",
+    "@Newsweek",
+    "@WashingtonPost",
+    "@jimcramer",
+    "@TheStalwart",
+    "@TruthGundlach",
+    "@Carl_C_Icahn",
+    "@ReformedBroker",
+    "@bespokeinvest",
+    "@stlouisfed",
+    "@muddywatersre",
+    "@mcuban",
+    "@AswathDamodaran",
+    "@elerianm",
+    "@MorganStanley",
+    "@ianbremmer",
+    "@GoldmanSachs",
+    "@Wu_Tang_Finance",
+    "@Schuldensuehner",
+    "@NorthmanTrader",
+    "@Frances_Coppola",
+    "@bySamRo",
+    "@BuzzFeed",
+    "@nytimes"
+}
 
 HOST = "https://api.twitter.com"
 
@@ -112,6 +136,10 @@ class TwitterApi:
             if context.last_requested is None or tweet.timestamp > context.last_requested:
                 context.last_requested = tweet.timestamp
         context.tweets.extend(user_tweets)
+        try:
+            print(self.user_ids[user_id], user_tweets[-1].timestamp)
+        except:
+            print(self.user_ids[user_id], None)
 
     async def get_tweets(self) -> List[Tweet]:
         if self.user_ids is None:
