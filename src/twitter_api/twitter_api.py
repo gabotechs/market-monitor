@@ -41,7 +41,6 @@ USER_IDS = {
     "@NorthmanTrader",
     "@Frances_Coppola",
     "@bySamRo",
-    "@BuzzFeed",
     "@nytimes"
 }
 
