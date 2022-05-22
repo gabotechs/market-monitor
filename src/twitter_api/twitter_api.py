@@ -21,7 +21,6 @@ USER_IDS = {
     "@WSJDealJournal",
     "@elonmusk",
     "@Newsweek",
-    "@WashingtonPost",
     "@jimcramer",
     "@TheStalwart",
     "@TruthGundlach",
@@ -41,7 +40,6 @@ USER_IDS = {
     "@NorthmanTrader",
     "@Frances_Coppola",
     "@bySamRo",
-    "@nytimes"
 }
 
 HOST = "https://api.twitter.com"
