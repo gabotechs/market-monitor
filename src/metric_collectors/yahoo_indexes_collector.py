@@ -1,4 +1,5 @@
 import json
+import logging
 from typing import List
 
 from metric_publisher.metric_collector import MetricCollector, MetricEntry
@@ -15,8 +16,8 @@ class YahooIndexesCollector(YahooApiSource, MetricCollector):
         "^VIX"
     ]
 
-    def __init__(self):
-        super(YahooIndexesCollector, self).__init__(self.INDEXES)
+    def __init__(self, logger: logging.Logger):
+        super(YahooIndexesCollector, self).__init__(self.INDEXES, logger)
 
     async def get_metrics(self) -> List[MetricEntry]:
         raw_res = await asyncio_detailed(client=self.client, symbols=','.join(self.symbols))

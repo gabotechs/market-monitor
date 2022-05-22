@@ -91,6 +91,28 @@ class TwitterApi:
             ))
         return tweets
 
+    @dataclass
+    class TaskContext:
+        fail_count: int
+        last_requested: Optional[datetime]
+        tweets: List[Tweet]
+
+    async def task(self, user_id: str, context: TaskContext):
+        if context.fail_count > len(self.user_ids) / 3:
+            return
+        try:
+            user_tweets = await self.__get_user_tweets(user_id, self.last_requested)
+        except Exception as e:
+            self.logger.error(f'Failed to get tweets: {e}')
+            context.fail_count += 1
+            if context.fail_count > len(self.user_ids) / 3:
+                raise Exception(f'Too much failures getting tweets')
+            return
+        for tweet in user_tweets:
+            if context.last_requested is None or tweet.timestamp > context.last_requested:
+                context.last_requested = tweet.timestamp
+        context.tweets.extend(user_tweets)
+
     async def get_tweets(self) -> List[Tweet]:
         if self.user_ids is None:
             self.logger.info("loading user ids...")
@@ -98,29 +120,18 @@ class TwitterApi:
             self.logger.info(f"{len(loaded_user_ids)} users loaded correctly")
 
         self.logger.info(f"collecting tweets since {self.last_requested}...")
-        tweets: List[Tweet] = []
-        last_requested: Dict[str, Optional[datetime]] = {'ref': None}
-        fail_count = {'ref': 0}
+
+        tasks_context = self.TaskContext(
+            fail_count=0,
+            last_requested=None,
+            tweets=[]
+        )
+
         tasks = []
         for user_id in self.user_ids:
-            async def task(tweets_collector: List[Tweet]):
-                if fail_count['ref'] > len(self.user_ids) / 3:
-                    return
-                try:
-                    user_tweets = await self.__get_user_tweets(user_id, self.last_requested)
-                except Exception as e:
-                    self.logger.error(f'Failed to get tweets: {e}')
-                    fail_count['ref'] += 1
-                    if fail_count['ref'] > len(self.user_ids) / 3:
-                        raise Exception(f'Too much failures getting tweets')
-                    return
-                for tweet in user_tweets:
-                    if last_requested['ref'] is None or tweet.timestamp > last_requested['ref']:
-                        last_requested['ref'] = tweet.timestamp
-                tweets_collector.extend(user_tweets)
-            tasks.append(task(tweets))
+            tasks.append(self.task(user_id, tasks_context))
         await asyncio.gather(*tasks)
-        self.logger.info(f"collected {len(tweets)} new tweets")
-        if last_requested['ref']:
-            self.last_requested = last_requested['ref']
-        return tweets
+        self.logger.info(f"collected {len(tasks_context.tweets)} new tweets")
+        if tasks_context.last_requested:
+            self.last_requested = tasks_context.last_requested
+        return tasks_context.tweets
