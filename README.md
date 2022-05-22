@@ -47,17 +47,20 @@ Edit your `.env` file with the new config. After that, just execute `docker comp
 # Update
 
 - Inside the cloned project directory, pull the latest changes `git pull`
-- rebuild and launch the docker images `docker compose up --build -d`
+- Rebuild and launch the docker images `docker compose up --build -d`
 
 # Twitter sentiment analysis
 
 If you configure the `TWITTER_TOKEN` in your `.env` file, you will get most recent tweets
 from some well known accounts and perform sentiment analysis using AI on them. In order to
-get one `TWITTER_TOKEN` you must create a developer account and an application.
+get one `TWITTER_TOKEN` you must create a developer account and an application on twitter.
 
-In this link https://developer.twitter.com/apps you will find how to create one application.
-Once you have your application created, in the developer portal, select your application and
-go to the "Keys and tokens" tab. The token you want is the "Bearer Token" under "Authentication tokens"
+In this link https://developer.twitter.com/apps you will find how to create one.
+Once you have your application created: 
+- In the developer portal, select your application
+- Go to the "Keys and tokens" tab
+- Copy the "Bearer Token" under "Authentication tokens"
+- Paste it in the `TWITTER_TOKEN` field in your `.env` file
 
 # Customize
 
