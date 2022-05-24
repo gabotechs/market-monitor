@@ -1,6 +1,6 @@
 # Market Monitor
 
-### Real time dashboard for monitoring stocks and crypto, with twitter sentiment analysis and useful market insights.
+### Real time dashboard for monitoring stocks and crypto, with Twitter and Reddit sentiment analysis and useful market insights.
 
 <p align="center"> <img alt="" src="docs/dashboard.png"> </p>
 
