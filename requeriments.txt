@@ -5,3 +5,4 @@ influxdb-client[async]==1.28.0
 httpx==0.22.0
 vaderSentiment==3.3.2
 coloredlogs==15.0.1
+asyncpraw==7.5.0

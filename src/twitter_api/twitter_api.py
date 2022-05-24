@@ -133,10 +133,6 @@ class TwitterApi:
             if context.last_requested is None or tweet.timestamp > context.last_requested:
                 context.last_requested = tweet.timestamp
         context.tweets.extend(user_tweets)
-        try:
-            print(self.user_ids[user_id], user_tweets[-1].timestamp)
-        except:
-            print(self.user_ids[user_id], None)
 
     async def get_tweets(self) -> List[Tweet]:
         if self.user_ids is None:

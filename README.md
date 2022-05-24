@@ -27,6 +27,11 @@ INFLUXDB_ADMIN_PASSWORD="more-than-8-chars"
 SYMBOLS="AAPL,TSLA,MSFT,GOOG,NVDA,AMD,NET"
 # (optional) TWITTER_TOKEN is the bearer token of your twitter application
 TWITTER_TOKEN="your-apps-bearer-token"
+# (optional) reddit API configuration for gathering posts from reddit
+REDDIT_CLIENT_ID="your-reddit-client-id"
+REDDIT_CLIENT_SECRET="your-reddit-client-secret"
+REDDIT_PASSWORD="your-reddit-password"
+REDDIT_USERNAME="your-reddit-username"
 ```
 > **_Note:_** Currently, the maximum number of symbols is 10
 - Bring up the dependencies and leave them running in the background
@@ -62,6 +67,19 @@ Once you have your application created:
 - Copy the "Bearer Token" under "Authentication tokens"
 - Paste it in the `TWITTER_TOKEN` field in your `.env` file
 
+# Reddit posts sentiment analysis
+
+If you configure the Reddit API env variables, you will get most recent reddit posts about
+the market and perform sentiment analysis on them. You will need a Reddit account and a script
+application created under that account. 
+- **REDDIT_CLIENT_ID**: your application's client id
+- **REDDIT_CLIENT_SECRET**: your application's client secret
+- **REDDIT_PASSWORD**: your account's password
+- **REDDIT_USERNAME**: your account's username
+
+The application can be created here https://www.reddit.com/prefs/apps/.
+For more detailed instructions on how to create a reddit app follow this link
+https://praw.readthedocs.io/en/stable/getting_started/authentication.html#password-flow
 # Customize
 
 This project follows a plugin architecture, where it's easy to develop new plugins and extend

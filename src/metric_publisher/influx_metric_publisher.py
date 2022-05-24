@@ -94,7 +94,7 @@ class InfluxMetricPublisher:
                 try:
                     await write_api.write(bucket=self.bucket, org=self.org, record=point)
                 except Exception as e:
-                    self.logger.error(f"Error writing to influx: {e}")
+                    self.logger.error(f"Error writing to influx point {point}: {e}")
             if len(points):
                 self.logger.info(
                     f"collected {len(points)} metrics from "

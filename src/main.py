@@ -11,19 +11,27 @@ from metric_collectors.yahoo_stock_details_collector import YahooStockDetailsCol
 from metric_collectors.yahoo_insights_collector import YahooInsightsCollector
 from metric_collectors.yahoo_indexes_collector import YahooIndexesCollector
 from metric_collectors.twitter_tweet_collector import TwitterTweetCollector
+from metric_collectors.reddit_post_collector import RedditPostCollector
 
 from metric_publisher.influx_metric_publisher import InfluxMetricPublisher
 
 
 class Config(PyArgs):
     symbols: List[str]
+    log_level: str = 'INFO'
+
     influxdb_host: str = 'localhost'
     influxdb_port: int = 8086
     influxdb_token: str
     influxdb_bucket: str = 'primary'
     influxdb_organization: str = 'primary'
-    log_level: str = 'INFO'
+
     twitter_token: Optional[str] = None
+
+    reddit_client_id: Optional[str] = None
+    reddit_client_secret: Optional[str] = None
+    reddit_password: Optional[str] = None
+    reddit_username: Optional[str] = None
 
 
 async def main():
@@ -44,7 +52,13 @@ async def main():
     if config.twitter_token:
         publisher.register_plugin(TwitterTweetCollector(config.twitter_token, logger), interval=600)
     else:
-        logger.warning("TWITTER_TOKEN not configured, tweeter feed is not available")
+        logger.warning("TWITTER_TOKEN not configured, twitter feed is not available")
+
+    if config.reddit_username and config.reddit_password and config.reddit_client_id and config.reddit_client_secret:
+        publisher.register_plugin(RedditPostCollector(logger, config.reddit_client_id, config.reddit_client_secret, config.reddit_password, config.reddit_username), interval=3600)
+    else:
+        logger.warning("REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_PASSWORD or REDDIT_USERNAME not configured, reddit feed is not available")
+
     publisher.register_plugin(YahooIndexesCollector(logger), interval=5)
     publisher.register_plugin(YahooQuotesCollector(config.symbols, logger), interval=5)
     publisher.register_plugin(YahooInsightsCollector(config.symbols, logger), interval=3600)
