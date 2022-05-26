@@ -86,7 +86,7 @@ This project follows a plugin architecture, where it's easy to develop new plugi
 the data collection features with just a few lines of code. You can see [here](src/metric_collectors)
 the current plugins that collect data from Yahoo finance api and Twitter.
 
-Plugins are hooked up with the metrics collector [here](https://github.com/GabrielMusat/market-monitor/blob/main/src/main.py#L50-L66). The data collected by 
+Plugins are hooked up with the metrics collector [here](https://github.com/GabrielMusat/market-monitor/blob/main/src/main.py#L52-L66). The data collected by 
 the plugins will be available to be displayed in the **InfluxDB** dashboard, which uses the
 **flux** query language to gather and display data.
 
